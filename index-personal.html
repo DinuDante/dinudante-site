@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinesh Behera (Dinu) — 3D Printing · DevOps</title>
+<meta name="description" content="Dinesh Behera, aka Dinu — founder of DDPrinterZ (custom 3D printing, Bhubaneswar) and DevOps learner-educator at ProLEAP Academy.">
+<style>
+  :root{--bg:#0a0a0f;--card:#14141d;--text:#ececf1;--muted:#9a9aad;--accent:#a78bfa;--accent2:#22d3ee;--green:#25D366}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;
+    background-image:radial-gradient(ellipse 50% 40% at 70% 0%,rgba(167,139,250,.10),transparent)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+  header{padding:100px 0 56px}
+  .hello{color:var(--accent2);font-weight:600;letter-spacing:1px;font-size:.95rem;text-transform:uppercase}
+  h1{font-size:clamp(2.3rem,6vw,3.5rem);font-weight:800;margin:10px 0 4px}
+  h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .nick{color:var(--muted);font-size:1.1rem}
+  .nick b{color:var(--text)}
+  .tag{color:var(--muted);font-size:1.12rem;max-width:580px;margin-top:12px}
+  .loc{margin-top:12px;color:var(--muted);font-size:.95rem}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;
+    text-decoration:none;font-weight:700;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-wa{background:var(--green);color:#fff}
+  .btn-b{background:var(--card);color:var(--text);border:1px solid #26263a}
+  /* TABS */
+  section{padding:30px 0 60px}
+  .tabs{display:flex;gap:10px;margin-bottom:26px;flex-wrap:wrap}
+  .tab-btn{flex:1;min-width:200px;padding:16px 22px;border-radius:12px;border:1px solid #26263a;
+    background:var(--card);color:var(--muted);font-size:1.05rem;font-weight:700;cursor:pointer;
+    transition:all .2s;text-align:center;font-family:inherit}
+  .tab-btn.active{color:#fff;border-color:transparent}
+  .tab-btn.active.t1{background:linear-gradient(90deg,#0e7490,#164e63)}
+  .tab-btn.active.t2{background:linear-gradient(90deg,#7c3aed,#4c1d95)}
+  .pane{display:none;background:var(--card);border:1px solid #26263a;border-radius:16px;padding:34px}
+  .pane.active{display:block;animation:fade .3s}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .pane h2{font-size:1.5rem;margin-bottom:4px}
+  .pane .role{color:var(--accent2);font-weight:600;margin-bottom:16px}
+  .pane p{color:#c6c6d4;margin-bottom:14px}
+  .pane ul{list-style:none;margin:14px 0 22px}
+  .pane li{color:#c6c6d4;padding:6px 0;padding-left:26px;position:relative}
+  .pane li::before{content:"▸";position:absolute;left:6px;color:var(--accent2)}
+  .about p{color:#c6c6d4;margin-bottom:14px}
+  h2.sec{font-size:1.6rem;margin-bottom:18px}
+  h2.sec::after{content:"";display:block;width:44px;height:3px;margin-top:8px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px}
+  footer{border-top:1px solid #1d1d2b;padding:30px 0 50px;color:var(--muted);font-size:.9rem}
+  footer a{color:var(--accent2);text-decoration:none;margin-right:18px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="hello">Hi, I'm</div>
+    <h1>Dinesh <span>Behera</span></h1>
+    <p class="nick">but everyone calls me <b>Dinu</b> 👋</p>
+    <p class="tag">I print. I teach. I code. I build — and have fun doing it.</p>
+    <p class="loc">📍 Bhubaneswar, Odisha, India</p>
+    <div class="cta-row">
+      <a class="btn btn-wa" href="https://wa.me/919040632014?text=Hi%20Dinu!" target="_blank">💬 Reach out on WhatsApp</a>
+      <a class="btn btn-b" href="mailto:dineshdante.ds@gmail.com">✉️ Email Me</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="tabs">
+      <button class="tab-btn t1 active" onclick="show(0,this)">🖨️ 3D Printing · DDPrinterZ</button>
+      <button class="tab-btn t2" onclick="show(1,this)">🚀 DevOps · ProLEAP Academy</button>
+    </div>
+
+    <div class="pane active">
+      <h2>DDPrinterZ</h2>
+      <div class="role">Founder · Custom 3D Printing Studio</div>
+      <p>My 3D printing studio in Bhubaneswar — multicolor prints, personalized gifts, lithophanes and rapid prototypes, printed on Bambu Lab machines and delivered across India.</p>
+      <ul>
+        <li>Multicolor nameplates, keychains & lithophane photo lamps</li>
+        <li>Prototypes for startups & final-year engineering projects</li>
+        <li>Daily prints and timelapses on Instagram & YouTube</li>
+      </ul>
+      <div class="cta-row" style="margin-top:0">
+        <a class="btn btn-b" href="https://dinudante.com">🌐 Visit DDPrinterZ</a>
+        <a class="btn btn-b" href="https://www.instagram.com/ddprinterz/" target="_blank">📸 Instagram</a>
+        <a class="btn btn-b" href="https://www.youtube.com/@DDPrinterZ" target="_blank">▶️ YouTube</a>
+      </div>
+    </div>
+
+    <div class="pane">
+      <h2>ProLEAP Academy</h2>
+      <div class="role">Learning & Teaching DevOps</div>
+      <p>My DevOps journey at ProLEAP Academy — cloud, CI/CD, containers and automation. Documenting what I learn and helping others start their own DevOps path.</p>
+      <ul>
+        <li>Cloud fundamentals & infrastructure as code</li>
+        <li>CI/CD pipelines, Docker & Kubernetes</li>
+        <li>Notes, projects and resources — coming soon</li>
+      </ul>
+      <div class="cta-row" style="margin-top:0">
+        <a class="btn btn-b" href="https://wa.me/919040632014?text=Hi%20Dinu!%20Tell%20me%20about%20DevOps%20at%20ProLEAP." target="_blank">💬 Ask me about it</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <h2 class="sec">About</h2>
+    <p>I'm Dinesh — a maker from Bhubaneswar who loves turning ideas into real things. What started as a hobby with one 3D printer became <a href="https://dinudante.com" style="color:var(--accent2)">DDPrinterZ</a>, a custom printing studio serving customers across Odisha and India.</p>
+    <p>Alongside printing, I'm building my DevOps skills at ProLEAP Academy and sharing the journey. This site is my corner of the internet — everything I build lives here.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="https://dinudante.com">DDPrinterZ</a>
+    <a href="https://www.youtube.com/@DDPrinterZ">YouTube</a>
+    <a href="https://www.instagram.com/ddprinterz/">Instagram</a>
+    <a href="https://wa.me/919040632014">WhatsApp</a>
+    <a href="mailto:dineshdante.ds@gmail.com">Email</a>
+    <p style="margin-top:14px">© 2026 Dinesh "Dinu" Behera · DinuDante · Bhubaneswar, India</p>
+  </div>
+</footer>
+
+<script>
+  function show(i,btn){
+    document.querySelectorAll('.pane').forEach((p,idx)=>p.classList.toggle('active',idx===i));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
