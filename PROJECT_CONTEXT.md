@@ -1,6 +1,6 @@
 # DinuDante.in project context
 
-Last updated: 2026-08-19 (Asia/Kolkata)
+Last updated: 2026-08-20 (Asia/Kolkata)
 
 ## Identity and positioning
 
@@ -20,6 +20,8 @@ Last updated: 2026-08-19 (Asia/Kolkata)
 - Theme control uses the sun/moon switch; wider layouts also show the current `LIGHT` or `DARK` state.
 - Navigation stays sticky; clicking the brand always returns home.
 - Keep layouts simple, calm, fast and responsive rather than decorative or crowded.
+- The layout uses a fluid high-resolution composition from narrow phones through 1440p, ultrawide and native 4K displays; do not restore a fixed 1100 px visual cap on large screens.
+- Wide layouts deliberately increase content width, type scale, image presentation and section density while retaining controlled line lengths.
 
 ## Responsive and image rules
 
