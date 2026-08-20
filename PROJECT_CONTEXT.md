@@ -38,6 +38,9 @@ Last updated: 2026-08-20 (Asia/Kolkata)
 - The website résumé is the canonical résumé; do not reuse the original source PDF design.
 - Downloadable file: `assets/Dinesh_Behera_Resume.pdf`.
 - It must remain one A4 page, selectable-text and ATS-friendly.
+- The downloadable PDF is a standalone ATS résumé derived from the available Master CV and ATS source résumé; it is intentionally separate from the styled website résumé and must not be regenerated from `resume.html`.
+- Current verified PDF properties: one A4 page, 442 extracted words, embedded Arial fonts, no images, three contact links, and populated title/author/subject/keyword metadata.
+- The download link uses the cache-busting query `?v=20260820-ats` while retaining the filename `Dinesh_Behera_Resume.pdf`.
 - The iOS Safari print path requires the final WebKit print rule in `resume.html`: a fixed 281 mm canvas with the complete résumé scaled to 96%. Do not remove it or replace it with `zoom`; iOS Safari ignored `zoom` and produced two pages.
 - Current skills intentionally exclude HPE 3PAR/CSI, storage/data-protection categories, MySQL/DBA, Dynatrace and Data automation.
 - Use `Basic networking`, not `Networking` alone.
@@ -56,8 +59,9 @@ Last updated: 2026-08-20 (Asia/Kolkata)
 - Repository: `git@github.com:DinuDante/dinudante-site.git`
 - Branch: `main`
 - Hosting: GitHub Pages at https://dinudante.in
-- Latest deployed commit at context save: `405bf93` (`Force single-sheet Safari resume printing`).
-- GitHub Pages deployment for that commit completed successfully and the live stylesheet was verified.
+- Latest deployed site commit at context save: `32de10d` (`Scale site for high-resolution displays`).
+- The preceding PDF/cache releases are `b1ff038` (`Refresh responsive layouts and ATS resume`) and `7e3d498` (`Bust cached resume downloads`).
+- GitHub Pages deployment for `32de10d` completed successfully. The live high-resolution HTML and SVG favicon were verified, and the live downloadable PDF matched the local asset byte-for-byte with SHA-256 `dafa616a83e62131d458e5e47bc5f4bef9ad667058cd3653d3bffeb10a77d0d8`.
 
 ## Workspace cautions
 
