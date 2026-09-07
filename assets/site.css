@@ -8,7 +8,8 @@
 @media screen{
   [data-theme=day]{--green:#45624b}
   .site-nav{contain:none}
-  .nav-link,.footer-links a,.contact-strip a,.footer-row>a{display:inline-flex;align-items:center;min-height:44px}
+  .nav-link,.footer-links a,.contact-strip>*,.footer-row>a{display:inline-flex;align-items:center;min-height:44px}
+  .contact-strip{align-items:center}
   .theme-toggle,.control{min-height:44px;height:44px}
   .theme-toggle:before{top:9px}
   .theme-toggle:after{top:8px}
