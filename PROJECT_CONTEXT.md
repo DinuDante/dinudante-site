@@ -1,12 +1,12 @@
 # DinuDante.in project context
 
-Last updated: 2026-08-20 (Asia/Kolkata)
+Last updated: 2026-09-07 (Asia/Kolkata)
 
 ## Identity and positioning
 
 - Display name everywhere: `Dinesh Behera | Dinu | DinuDante`.
 - Dinesh Behera is a cloud, platform and DevOps engineer, educator, and 3D-printing founder based in Bhubaneswar, Odisha.
-- CEO of ProLEAP Academy; personally teaches Python BootCamp, DevSecOps — The One, and Technical Documentation.
+- CEO of ProLEAP Academy; public teaching copy describes Python, DevOps and technical documentation. Current program links use DevOps Foundation – The One, Python Bootcamp and Technical Documentation Bootcamp, verified against the academy on 7 September 2026. Do not infer historical course equivalence.
 - DDPrinterZ is the extra-curricular/custom 3D-printing studio and maker identity.
 - Tone: humble, confident, simple, practical, evidence-led.
 - Languages: English, Hindi and Odia.
@@ -39,8 +39,8 @@ Last updated: 2026-08-20 (Asia/Kolkata)
 - Downloadable file: `assets/Dinesh_Behera_Resume.pdf`.
 - It must remain one A4 page, selectable-text and ATS-friendly.
 - The downloadable PDF is a standalone ATS résumé derived from the available Master CV and ATS source résumé; it is intentionally separate from the styled website résumé and must not be regenerated from `resume.html`.
-- Current verified PDF properties: one A4 page, 442 extracted words, embedded Arial fonts, no images, three contact links, and populated title/author/subject/keyword metadata.
-- The download link uses the cache-busting query `?v=20260820-ats` while retaining the filename `Dinesh_Behera_Resume.pdf`.
+- Current verified PDF properties: one A4 page, selectable text, embedded Arial fonts, no images, three contact links, and populated title/author/subject/keyword metadata. September cleanup moved Harbor into the automation/delivery group, used DevOps subject wording and added the content updated date.
+- The download link uses the cache-busting query `?v=20260907` while retaining the filename `Dinesh_Behera_Resume.pdf`.
 - The iOS Safari print path requires the final WebKit print rule in `resume.html`: a fixed 281 mm canvas with the complete résumé scaled to 96%. Do not remove it or replace it with `zoom`; iOS Safari ignored `zoom` and produced two pages.
 - Current skills intentionally exclude HPE 3PAR/CSI, storage/data-protection categories, MySQL/DBA, Dynatrace and Data automation.
 - Use `Basic networking`, not `Networking` alone.
@@ -67,3 +67,13 @@ Last updated: 2026-08-20 (Asia/Kolkata)
 
 - Do not stage or modify the untracked `.DS_Store` or `Sources/` directory unless explicitly requested.
 - For future releases, commit only intended site assets, push `main`, wait for the Pages action, then verify the live HTML and PDF rather than relying only on the local build.
+
+## September cleanup release
+
+- User authorized end-to-end cleanup and live publication on 7 September 2026. See QA_REPORT.md and IMPLEMENTATION_STATUS.md for scope, evidence and deferred content.
+- Static HTML remains the platform. Styles are now assets/home.css, assets/resume.css and assets/site.css. Shared robust theme/menu code is assets/theme-init.js and assets/site.js. Keep the original résumé print canvas rule in assets/resume.css.
+- Mobile menu, skip links, touch controls, storage failure handling, light-theme contrast, business social labels and copyable email are implemented. Decorative counters are removed.
+- Home canonical is `/`; retain `/index.html` alias and `/resume.html`. New privacy page, 404, sitemap and robots are included. No analytics script enabled.
+- GitHub Pages uses its dynamic pages build and deployment workflow. Last successful pre-cleanup revision was 6ccd572. The cleanup release is identified by the commit introducing QA_REPORT.md; verify Pages success against that SHA before declaring deployment done.
+- Engineering notes and scripts are excluded via _config.yml. Local preview serves an allowlist with noindex headers. Never serve Sources or private case-study evidence.
+- Do not represent this cleanup as full completion of the engineering brief: Work templates/studies, shared factual content records, personal profiles, exact career dates and education remain outstanding.

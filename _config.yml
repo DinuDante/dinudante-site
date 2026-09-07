@@ -1,0 +1,7 @@
+# GitHub Pages: keep engineering notes and local source evidence out of the site.
+exclude:
+  - Sources
+  - scripts
+  - PROJECT_CONTEXT.md
+  - IMPLEMENTATION_STATUS.md
+  - QA_REPORT.md

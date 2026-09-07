@@ -1,0 +1,35 @@
+/* Shared interaction fixes; preserve the independent résumé print layout. */
+.skip-link{position:fixed;left:12px;top:-100px;z-index:100;background:var(--surface);color:var(--text);padding:12px 18px;border:2px solid var(--green)}
+.skip-link:focus{top:12px}
+.menu-toggle{display:none}
+.contact-section{padding-block:0 70px;overflow-wrap:anywhere}
+.contact-section h2{font:400 2.5rem Georgia,serif}
+.contact-section p{color:var(--muted)}
+@media screen{
+  [data-theme=day]{--green:#45624b}
+  .site-nav{contain:none}
+  .nav-link,.footer-links a,.contact-strip a,.footer-row>a{display:inline-flex;align-items:center;min-height:44px}
+  .theme-toggle,.control{min-height:44px;height:44px}
+  .theme-toggle:before{top:9px}
+  .theme-toggle:after{top:8px}
+  [data-theme=day] .theme-toggle:after{top:13px}
+  .mark{min-height:44px}
+  .button{white-space:normal;text-align:center}
+  .academy-list a{display:block;min-height:44px;padding-block:8px;text-underline-offset:4px;overflow-wrap:anywhere}
+  .portrait-frame{margin:0}
+  .contact-strip a{overflow-wrap:anywhere}
+  @media(max-width:1100px){
+    .site-nav{flex-wrap:wrap;gap:8px 16px;padding-block:10px}
+    .site-nav .nav-actions{flex-wrap:wrap;flex:1;justify-content:flex-end}
+    .site-nav .nav-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px 18px}
+    .menu-ready .menu-toggle{display:inline-flex;align-items:center;justify-content:center;min-width:56px;min-height:44px;padding:0 10px;border:1px solid var(--line);border-radius:5px;color:var(--text);background:var(--surface);font-size:.75rem;cursor:pointer}
+    .menu-ready .site-nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;padding:12px 20px;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 12px 24px var(--shadow)}
+    .menu-ready .site-nav .nav-links.is-open{display:flex;flex-direction:column;align-items:stretch}
+    .menu-ready .nav-link{padding:0 12px;font-size:.9rem}
+    html:not(.menu-ready) .site-nav{position:relative}
+    html:not(.menu-ready) .site-nav .nav-actions{flex-basis:100%;justify-content:space-between}
+    html:not(.menu-ready) .site-nav .nav-links{justify-content:flex-start}
+  }
+  @media(max-width:560px){.contact-strip{grid-template-columns:1fr}.control{min-width:44px}.site-nav .mark{flex-shrink:0}}
+}
+@media print{.skip-link,.menu-toggle{display:none!important}}
