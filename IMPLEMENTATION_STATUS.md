@@ -13,6 +13,7 @@ The 14-page engineering brief was read in full. The initial inventory is complet
 | `/#maker` | Dinesh | Custom-print order link and explicitly branded social links | Cleanup ready |
 | `/#about`, `/#contact` | Dinesh | Existing biography plus labeled, copyable email | Cleanup ready |
 | `/privacy/` | Engineer/Dinesh | Theme storage, GitHub hosting and external contact services | New public page |
+| `/setup.html` | Dinesh | Dedicated workspace setup, gear, Amazon affiliate grid and Instagram gallery | Live |
 | Missing URLs | Engineer | Useful 404 with home and résumé actions | Local 404 verified; live verification follows push |
 | `/work/`, `/work/{slug}/` | Dinesh | Proposed index/detail templates | Deferred; no public empty routes |
 | `/builds/` | Dinesh | Optional creator archive | Deferred P2 |

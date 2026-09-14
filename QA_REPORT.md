@@ -10,6 +10,7 @@ Scope: end-to-end check and cleanup of the existing public site, followed by pub
 - Moved Harbor out of observability in web and ATS résumés. Retained the standalone A4 ATS layout, selectable text, metadata and three links. Both résumés show a content update date; the stable PDF filename has a new cache query.
 - Existing teaching copy describes subjects; current academy programs have their exact public names and direct links. No historical course-equivalence or new career-date claim was added.
 - Business social links explicitly say DDPrinterZ. Added a copyable email fallback, canonical and sharing metadata, sitemap, robots.txt, a privacy page and a useful 404 page.
+- Added a dedicated Setup & Gear (`/setup.html`) page. Implemented an Instagram-ready gallery and a dynamic JavaScript grid for Amazon affiliate items that extracts metadata client-side, avoiding build-time scraping failures.
 - GitHub Pages excludes engineering notes, scripts and Sources. Local preview serves only public files with noindex response headers.
 
 ## Evidence
