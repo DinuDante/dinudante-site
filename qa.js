@@ -24,7 +24,7 @@ if (schemaMatch) {
 }
 
 // "ALL" filter count
-const filterAllMatch = html.match(/data-filter="all">ALL <span>(\d+)<\/span>/);
+const filterAllMatch = html.match(/data-filter="all">ALL GEAR <span>(\d+)<\/span>/);
 const filterAllCount = filterAllMatch ? parseInt(filterAllMatch[1]) : 0;
 
 console.log('uniqueDatasetCount:', uniqueDatasetCount);
