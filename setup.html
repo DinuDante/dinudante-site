@@ -200,7 +200,7 @@
         
         a.innerHTML = `
           <div class="gear-image">
-            <img src="${imgUrl}" alt="Product ${id}" loading="lazy" onerror="this.style.opacity='0'">
+            <img src="${imgUrl}" alt="Product ${id}" loading="lazy" onerror="this.onerror=null; this.src='/assets/gear-placeholder.svg'; this.style.mixBlendMode='normal'; this.style.width='48px'; this.style.height='48px'; this.style.opacity='0.5';">
           </div>
           <div class="gear-info">
             <h3 class="gear-title">Amazon Setup Gear (${id})</h3>
