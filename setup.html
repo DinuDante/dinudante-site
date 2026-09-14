@@ -185,7 +185,7 @@
         const id = item.asin;
         
         // Use Amazon's image endpoint with the real ASIN
-        const imgUrl = \`https://images-na.ssl-images-amazon.com/images/P/\${id}.01.LZZZZZZZ.jpg\`;
+        const imgUrl = `https://images-na.ssl-images-amazon.com/images/P/${id}.01.LZZZZZZZ.jpg`;
         
         const a = document.createElement('a');
         a.className = 'gear-item';
@@ -193,18 +193,18 @@
         a.target = '_blank';
         a.rel = 'noopener';
         
-        a.innerHTML = \`
+        a.innerHTML = `
           <div class="gear-image">
-            <img src="\${imgUrl}" alt="\${item.title}" loading="lazy" onerror="this.onerror=null; this.src='/assets/gear-placeholder.svg'; this.style.mixBlendMode='normal'; this.style.width='48px'; this.style.height='48px'; this.style.opacity='0.5';">
+            <img src="${imgUrl}" alt="${item.title}" loading="lazy" onerror="this.onerror=null; this.src='/assets/gear-placeholder.svg'; this.style.mixBlendMode='normal'; this.style.width='48px'; this.style.height='48px'; this.style.opacity='0.5';">
           </div>
           <div class="gear-info">
-            <h3 class="gear-title">\${item.title}</h3>
+            <h3 class="gear-title">${item.title}</h3>
             <span class="gear-action">
               View on Amazon 
               <svg viewBox="0 0 24 24"><path d="M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6v2H5v12h12v-6h2zM13 3v2h4.59l-9.83 9.83 1.41 1.41L19 6.41V11h2V3h-8z"/></svg>
             </span>
           </div>
-        \`;
+        `;
         container.appendChild(a);
       });
     });
