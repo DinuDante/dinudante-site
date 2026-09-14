@@ -6,198 +6,320 @@
   <meta name="theme-color" content="#0d1512">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://dinudante.in/setup.html">
-  <title>Setup & Gear — Dinesh Behera | Dinu | DinuDante</title>
-  <meta name="description" content="A curated list of my workspace setup, gear, and tools.">
+  <title>Setup & Gear — Dinesh Behera</title>
+  <meta name="description" content="A curated look at the hardware and tools behind my cloud engineering, coding, teaching, maker projects, and content workflow.">
   <script src="/assets/theme-init.js"></script>
   <link rel="stylesheet" href="/assets/home.css">
   <link rel="stylesheet" href="/assets/site.css?v=bba3dc48c36e">
   <style>
-    .setup-hero { padding: 90px 0 40px; text-align: center; }
-    .setup-hero h1 { margin: 10px auto; }
+    /* ENGINEERING WORKSTATION THEME */
+    .setup-hero { padding: 90px 0 40px; }
+    .setup-hero h1 { margin: 10px 0 20px 0; font-weight: 500; font-family: ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.02em; font-size: clamp(3rem, 6vw, 4.5rem); }
     
-    .setup-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-bottom: 80px;
-    }
-    .setup-photo {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      background: var(--surface);
-      aspect-ratio: 4/5;
+    .setup-stats {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
     }
-    .setup-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(0.85);
-    }
-    .setup-photo:before {
-      content: "Instagram Photo";
-      position: absolute;
+    .setup-stat {
+      font-size: 0.75rem;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
       color: var(--muted);
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      z-index: 0;
+      background: color-mix(in srgb, var(--surface) 50%, transparent);
     }
-    .setup-photo img { position: relative; z-index: 1; }
+    .setup-stat strong { color: var(--green); font-weight: normal; }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-top: 50px;
+      overflow-x: auto;
+      padding-bottom: 15px;
+      scrollbar-width: none;
+    }
+    .filters::-webkit-scrollbar { display: none; }
     
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--green); color: var(--text); }
+    .filter-btn.active { background: var(--deep); border-color: var(--green); color: #fff; }
+
     .gear-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
     }
-    .gear-item {
+    
+    .gear-card {
       display: flex;
       flex-direction: column;
       border: 1px solid var(--line);
-      border-radius: 8px;
-      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      border-radius: 6px;
+      background: var(--surface);
       overflow: hidden;
       text-decoration: none;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
     }
-    .gear-item:hover {
-      transform: translateY(-4px);
+    .gear-card:hover {
+      transform: translateY(-2px);
       border-color: var(--green);
-      box-shadow: 0 12px 30px var(--shadow);
+      box-shadow: 0 12px 24px var(--shadow);
     }
-    .gear-image {
+    
+    .gear-image-container {
       aspect-ratio: 1;
+      padding: 24px;
       background: var(--bg);
+      border-bottom: 1px solid var(--line);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      border-bottom: 1px solid var(--line);
     }
-    .gear-image img {
-      max-width: 100%;
-      max-height: 100%;
+    
+    .gear-image-container img {
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       mix-blend-mode: multiply;
+      transition: transform 0.3s ease;
     }
-    [data-theme="night"] .gear-image img {
-      /* Invert or adjust product images if they have white backgrounds in dark mode */
-      filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+    
+    [data-theme="night"] .gear-image-container img {
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.05));
       mix-blend-mode: normal;
     }
-    .gear-info {
-      padding: 18px;
+    
+    .gear-card:hover .gear-image-container img { transform: scale(1.05); }
+
+    .gear-details {
+      padding: 20px;
       display: flex;
       flex-direction: column;
       flex: 1;
       justify-content: space-between;
     }
-    .gear-title {
-      font-size: 0.9rem;
-      color: var(--text);
-      margin: 0 0 10px 0;
-      line-height: 1.4;
-      font-family: system-ui, sans-serif;
-    }
-    .gear-action {
+    
+    .gear-cat {
+      font-size: 0.65rem;
       color: var(--green);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
       text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    }
+    
+    .gear-title {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin: 0 0 16px 0;
+      line-height: 1.5;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-weight: 500;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .gear-link {
+      font-size: 0.75rem;
+      color: var(--muted);
       display: flex;
       align-items: center;
       gap: 6px;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
     }
-    .gear-action svg { width: 14px; height: 14px; fill: currentColor; }
+    .gear-card:hover .gear-link { color: var(--text); }
+    .gear-link svg { width: 14px; height: 14px; fill: currentColor; }
+    
+    .ig-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin: 60px 0;
+    }
+    
+    @media (min-width: 768px) {
+      .ig-container { grid-template-columns: 1fr 1fr; align-items: start; }
+    }
+    
+    .disclaimer {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--line);
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
   <nav class="site-nav shell" aria-label="Main navigation">
     <a class="mark" href="/" aria-label="Go to home"><span class="mark-symbol" aria-hidden="true">日</span><span class="mark-name">DINESH BEHERA | DINU | DINUDANTE</span></a>
-    <div class="nav-actions"><button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false">Menu</button><div class="nav-links" id="main-navigation"><a class="nav-link" href="/#professional">Profile</a><a class="nav-link" href="resume.html">Resume</a><a class="nav-link" href="/#academy">Learn</a><a class="nav-link" href="/#maker">Maker</a><a class="nav-link" href="setup.html">Setup</a><a class="nav-link" href="/#about">About</a></div><div class="theme-control"><span class="theme-label" aria-hidden="true">dark</span><button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false"></button></div></div>
+    <div class="nav-actions">
+      <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false">Menu</button>
+      <div class="nav-links" id="main-navigation">
+        <a class="nav-link" href="/#professional">Profile</a>
+        <a class="nav-link" href="resume.html">Resume</a>
+        <a class="nav-link" href="/#academy">Learn</a>
+        <a class="nav-link" href="/#maker">Maker</a>
+        <a class="nav-link" href="setup.html" style="color:var(--text);">Setup</a>
+        <a class="nav-link" href="/#about">About</a>
+      </div>
+      <div class="theme-control">
+        <span class="theme-label" aria-hidden="true">dark</span>
+        <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false"></button>
+      </div>
+    </div>
   </nav>
   
   <main id="main-content" tabindex="-1">
     <header class="shell setup-hero">
-      <div class="eyebrow">Workspace · Hardware · Tools</div>
+      <div class="eyebrow">WORKSPACE · HARDWARE · TOOLS</div>
       <h1>My Setup</h1>
-      <p class="intro" style="margin: 0 auto; max-width: 600px;">A curated look at my workspace, hardware, and everyday tools. Built for cloud engineering, coding, teaching, and maker projects.</p>
+      <p class="intro" style="max-width: 700px;">A curated look at the hardware and tools behind my cloud engineering, coding, teaching, maker projects, and content workflow.</p>
+      
+      <div class="setup-stats">
+        <div class="setup-stat">GEAR COUNT: <strong>38</strong></div>
+        <div class="setup-stat">STATUS: <strong>OPERATIONAL</strong></div>
+      </div>
     </header>
 
-    <div class="divider shell" style="margin-top: 40px; margin-bottom: 60px;"><span>GALLERY · INSTAGRAM</span></div>
-    
-    <section class="shell">
-      <div class="setup-gallery" id="media-gallery">
-        <!-- Direct Instagram Embed -->
-        <div class="setup-photo">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/dineshdante.ds/" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-             <div style="padding:16px;"> <a href="https://www.instagram.com/dineshdante.ds/" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;"> View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-14px) translateX(8px);"></div></div></div></a> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/dineshdante.ds/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Instagram Post</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by Dinesh Behera (@dineshdante.ds)</p></div></blockquote>
-          <script async src="//www.instagram.com/embed.js"></script>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider shell"><span>ギア · HARDWARE & GEAR</span></div>
-    
-    <section class="shell" style="padding-bottom: 120px;">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Affiliate Links</span>
-          <h2 style="font:400 clamp(1.8rem,4vw,2.8rem) Georgia,serif; margin-top:8px;">The tools that power the work.</h2>
-        </div>
+    <section class="shell" style="padding-bottom: 80px;">
+      <div class="filters" id="gear-filters">
+        <button class="filter-btn active" data-filter="all">ALL GEAR</button>
+        <button class="filter-btn" data-filter="Peripherals & Audio">PERIPHERALS & AUDIO</button>
+        <button class="filter-btn" data-filter="Tech & Networking">TECH & NETWORKING</button>
+        <button class="filter-btn" data-filter="Workspace & Maintenance">WORKSPACE</button>
+        <button class="filter-btn" data-filter="Content & Media">CONTENT & MEDIA</button>
+        <button class="filter-btn" data-filter="Maker & 3D Printing">MAKER</button>
+        <button class="filter-btn" data-filter="Lifestyle & Accessories">LIFESTYLE</button>
       </div>
       
       <div class="gear-grid" id="gear-container">
-        <!-- Gear items will be populated by JS -->
+        <!-- Rendered via JS -->
+      </div>
+      
+      <div class="disclaimer">
+        * As an Amazon Associate I earn from qualifying purchases. This helps support the content I create.
+      </div>
+    </section>
+
+    <div class="divider shell" style="margin-bottom: 40px;"><span>INSTAGRAM</span></div>
+    
+    <section class="shell ig-container">
+      <div>
+        <h2 style="font:400 2rem Georgia,serif; margin:0 0 16px 0;">Workspace Log</h2>
+        <p style="color:var(--muted); margin-bottom:24px;">Follow <a href="https://www.instagram.com/dineshdante.ds/" target="_blank" rel="noopener" style="color:var(--green);text-decoration:none;">@dineshdante.ds</a> for latest setup updates, 3D printing projects, and daily engineering life.</p>
+        <a href="https://www.instagram.com/dineshdante.ds/" target="_blank" rel="noopener" class="button button-primary">View on Instagram</a>
+      </div>
+      
+      <!-- Instagram embed lazy loaded -->
+      <div style="border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); display: flex; justify-content: center; align-items: center; min-height: 400px;" id="ig-wrapper">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DFzW2gPylsT/" data-instgrm-version="14" style="background:#FFF; border:0; margin:0; padding:0; width:100%;"></blockquote>
       </div>
     </section>
   </main>
   
-  <footer><div class="footer-row shell"><span>© 2026 Dinesh Behera | Dinu | DinuDante · Bhubaneswar</span><div class="footer-links"><a href="/privacy/">Privacy</a>
-    <a href="https://www.instagram.com/ddprinterz/" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm11.5 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg> DDPrinterZ Instagram ↗</a>
-    <a href="https://www.youtube.com/@DDPrinterZ" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.7V8.3l6.3 3.7-6.3 3.7Z"/></svg> DDPrinterZ YouTube ↗</a>
-    <a href="https://wa.me/919040632014" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.2-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.4-.2-3 .8.8-2.9-.2-.4A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.5-3.3-3-.2-.3 0-.4.1-.6l.5-.6c.1-.2.1-.4 0-.6l-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1.1 1.5-1 2.5.1 1.2.8 2.5 1 2.7.1.2 2 3.2 5 4.3.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.2-.2-.4-.3l-1.8-.8Z"/></svg> WhatsApp</a>
-    <a href="mailto:dineshdante.ds@gmail.com"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5Zm2 2v.5l8 5 8-5V7H4Zm16 10V9.8l-8 5-8-5V17h16Z"/></svg> Email</a>
-  </div></div></footer>
+  <footer>
+    <div class="footer-row shell">
+      <span>© 2026 Dinesh Behera | Dinu | DinuDante · Bhubaneswar</span>
+      <div class="footer-links">
+        <a href="/privacy/">Privacy</a>
+        <a href="https://www.instagram.com/ddprinterz/" target="_blank" rel="noopener">DDPrinterZ Instagram ↗</a>
+        <a href="https://www.youtube.com/@DDPrinterZ" target="_blank" rel="noopener">DDPrinterZ YouTube ↗</a>
+        <a href="https://wa.me/919040632014" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:dineshdante.ds@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
   
   <script src="/assets/site.js" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const items = [{"url":"https://link.amazon/B08V2Vknk","asin":"B0GLH6M7DL","image":"https://m.media-amazon.com/images/I/71cu-Jst1cL._SL1500_.jpg","title":"AULA F75 75% Wireless PBT Keycaps Mechanical Keyboard"},{"url":"https://link.amazon/B07krLm6F","asin":"B0GJHXN7LJ","image":"https://m.media-amazon.com/images/I/51Dgw3MMnIS._SL1500_.jpg","title":"Quntis Monitor Light Bar 40 CM, Black"},{"url":"https://link.amazon/B0dJWUEQZ","asin":"B09KH6NFXG","image":"https://m.media-amazon.com/images/I/61HIJnrPojL._SL1500_.jpg","title":"Razer DeathAdder V2 X Hyper Speed Wireless Gaming Mouse"},{"url":"https://link.amazon/B06VgHu89","asin":"B0DV5HWDY7","image":"https://m.media-amazon.com/images/I/71P6fIG+y7L._SL1400_.jpg","title":"Green Soul Zodiac Superb Office Chair"},{"url":"https://link.amazon/B0btcV4La","asin":"B00HFRRQUS","image":"https://m.media-amazon.com/images/I/71jruiaS-PL._SL1267_.jpg","title":"Inlight Map Type Projector Screen, 6 W x 4 H"},{"url":"https://link.amazon/B01eaI9dP","asin":"B0GTQXM485","image":"https://m.media-amazon.com/images/I/517IqdlkdnL._SL1000_.jpg","title":"WZATCO Yuva Bolt, Fully Automatic Smart Home Projector"},{"url":"https://link.amazon/B08PGWzcV","asin":"B0H7N3YKZY","image":"https://m.media-amazon.com/images/I/51J9Y1H3KgL._SL1024_.jpg","title":"EDNITA 2Pcs Mini Laptop Stand for Desk"},{"url":"https://link.amazon/B0h0y0InD","asin":"B09ML1JMLV","image":"https://m.media-amazon.com/images/I/81aQBkD7OLL._SL1500_.jpg","title":"KEYORA Sunset Lamp Projector LED Desk Lamp"},{"url":"https://link.amazon/B01nMbT71","asin":"B07D1J88CF","image":"https://m.media-amazon.com/images/I/61kqsXJelUL._SL1500_.jpg","title":"UGREEN SD Card Reader USB C USB 3.0"},{"url":"https://link.amazon/B04QBSSmX","asin":"B09X7CFXSX","image":"https://m.media-amazon.com/images/I/81XikLcGGoL._SL1500_.jpg","title":"SanDisk Extreme Pro SD UHS I Card"},{"url":"https://link.amazon/B0eJoXVzO","asin":"B0FBRGKXHG","image":"https://m.media-amazon.com/images/I/51vT4GzBObL._SL1500_.jpg","title":"OnePlus Bullets Wireless Z3 in-Ear Neckband"},{"url":"https://link.amazon/B061j4huq","asin":"B0FQHGG943","image":"https://m.media-amazon.com/images/I/61yEi-KlveL._SL1024_.jpg","title":"ZORBES 360° Magnetic Phone Stand for Desk"},{"url":"https://link.amazon/B0bmr08F4","asin":"B0GVPYX2K9","image":"https://m.media-amazon.com/images/I/71yxK0lWhzL._SL1500_.jpg","title":"MagSafe Phone Grip Holder VANAMALI"},{"url":"https://link.amazon/B09DmWaCr","asin":"B078L5J7G1","image":"https://m.media-amazon.com/images/I/41Q04ArdEuL._SL1000_.jpg","title":"D-Link DIR-825 Dual Band Wi-Fi Router"},{"url":"https://link.amazon/B00yUi3a5","asin":"B0DH8BVS6Z","image":"https://m.media-amazon.com/images/I/61jRoRx6HiL._SL1500_.jpg","title":"Digitek DWM-116 Mic Wireless with Type-C & Lightning"},{"url":"https://link.amazon/B07HftGdV","asin":"B0FHDQSFN4","image":"https://m.media-amazon.com/images/I/71nRUXKhNCL._SL1024_.jpg","title":"Verilux 240W Type C Cable Fast Charging with LED"},{"url":"https://link.amazon/B04n5jObk","asin":"B09FDRMZ73","image":"https://m.media-amazon.com/images/I/31ihEsr1b8L._SL1000_.jpg","title":"TP-Link UE306 USB 3.0 to Gigabit Ethernet Adapter"},{"url":"https://link.amazon/B0ijABYjE","asin":"B0DQK87RJG","image":"https://m.media-amazon.com/images/I/71en8vIMOtL._SL1500_.jpg","title":"TechMaven Overhead Mobile Stand for Desk"},{"url":"https://link.amazon/B0dVOSnhf","asin":"B0G6XLSZLH","image":"https://m.media-amazon.com/images/I/71UwxERrxAL._SL1500_.jpg","title":"Wayona Aluminium Alloy Folding and Height Adjustable Stand"},{"url":"https://link.amazon/B06CJBflq","asin":"B0D1FZQLYD","image":"https://m.media-amazon.com/images/I/61s4K51Go3L._SL1500_.jpg","title":"Ambrane USB Type C Female to USB Male OTG Adapter"},{"url":"https://link.amazon/B0aDzT2td","asin":"B0CQM2L6DQ","image":"https://m.media-amazon.com/images/I/71QgVgwtWcL._SL1500_.jpg","title":"Ambrane 20-in-1 Cleaning Kit for Smartphones"},{"url":"https://link.amazon/B0644frAR","asin":"B0FZVV6693","image":"https://m.media-amazon.com/images/I/61SEYPb6dBL._SL1500_.jpg","title":"Techie Mini DisplayPort to HDMI Converter"},{"url":"https://link.amazon/B0gRXaoda","asin":"B076VF43GG","image":"https://m.media-amazon.com/images/I/711KZ2KfEpL._SL1500_.jpg","title":"Solimo 12-inch Analog Wall Clock"},{"url":"https://link.amazon/B0d8Fy5ZQ","asin":"B0FNRV6X18","image":"https://m.media-amazon.com/images/I/41Uy-UnZYIL._SL1200_.jpg","title":"CP PLUS 2MP Full HD Wi-Fi CCTV Camera"},{"url":"https://link.amazon/B0cpB8tJM","asin":"B09TQT5GVM","image":"https://m.media-amazon.com/images/I/71l8EsYoDKL._SL1500_.jpg","title":"Tantra Mobile Holder for Scooty"},{"url":"https://link.amazon/B07VvFDht","asin":"B0CKBND48X","image":"https://m.media-amazon.com/images/I/71pfl5uuwJL._SL1500_.jpg","title":"Boldfit Pull Up Bar Door for Home Workout"},{"url":"https://link.amazon/B01ovMriv","asin":"B0BGSV19KZ","image":"https://m.media-amazon.com/images/I/61o3NqZ+13L._SL1000_.jpg","title":"Red Lemon Swiss Cut Design 15.6 Inch Smart Laptop Backpack"},{"url":"https://link.amazon/B02E7NuaF","asin":"B0FSY2R459","image":"https://m.media-amazon.com/images/I/71Tq5HOL+mL._SL1500_.jpg","title":"Frido Cloud Comfort Lace-up Shoes for Men"},{"url":"https://link.amazon/B057syNwY","asin":"B08HDK65K8","image":"https://m.media-amazon.com/images/I/610v5AApjgL._SL1463_.jpg","title":"Skyshop C240 Prime TPMS (Car Tyre Pressure Monitoring)"},{"url":"https://link.amazon/B0ipYB4VG","asin":"B0D37XX7W6","image":"https://m.media-amazon.com/images/I/51EXk-CsrEL._SL1000_.jpg","title":"Qubo Digital Tyre Inflator MAX by Hero Group"},{"url":"https://link.amazon/B0j0Rz0dZ","asin":"B083Q4SHPT","image":"https://m.media-amazon.com/images/I/611JfxiftvL._SL1500_.jpg","title":"UGREEN 100W USB C to USB C Cable Right Angle 1M"},{"url":"https://link.amazon/B0dVpyCU0","asin":"B084X7Y51M","image":"https://m.media-amazon.com/images/I/61aPGUwffDS._SL1500_.jpg","title":"Sennheiser CX 80s Wired in Ear Earphones"},{"url":"https://link.amazon/B0ikySXoK","asin":"B09GBF7BDL","image":"https://m.media-amazon.com/images/I/61nA7fLNtkL._SL1500_.jpg","title":"Boldfit Plastic Gym Gallon Water Bottle 2.5 Liter"},{"url":"https://link.amazon/B0f2EkvoA","asin":"B0DT6G93YX","image":"https://m.media-amazon.com/images/I/71YzWFc0GSL._SL1500_.jpg","title":"GCA Kitchen Utility Knife, Professional Fruit"},{"url":"https://link.amazon/B0aIauGgL","asin":"B0912XTYLZ","image":"https://m.media-amazon.com/images/I/41g9dLL+IqL._SL1024_.jpg","title":"POPIO Bluetooth Remote Shutter Button"},{"url":"https://link.amazon/B0gQvWTNs","asin":"B0DXLCDJ8L","image":"https://m.media-amazon.com/images/I/51mHA4vXlaL._SL1500_.jpg","title":"QUARANT 99.9% Pure Isopropyl Alcohol IPA for Cleaning"},{"url":"https://link.amazon/B0iOpZKno","asin":"B0D1G6J7DD","image":"https://m.media-amazon.com/images/I/618aKyakJZL._SL1200_.jpg","title":"Serplex 10 Pcs Vacuum Filament Bags"},{"url":"https://link.amazon/B01W6F39i","asin":"B08GJ57MKL","image":"https://m.media-amazon.com/images/I/91mE+0CCnGL._SL1500_.jpg","title":"Coway Airmega 150 Air Purifier For Home"}];
-
+      const gearData = [{"url":"https://link.amazon/B08V2Vknk","asin":"B0GLH6M7DL","image":"https://m.media-amazon.com/images/I/71cu-Jst1cL._SL1500_.jpg","title":"AULA F75 75% Wireless PBT Keycaps Mechanical Keyboard","category":"Peripherals & Audio"},{"url":"https://link.amazon/B07krLm6F","asin":"B0GJHXN7LJ","image":"https://m.media-amazon.com/images/I/51Dgw3MMnIS._SL1500_.jpg","title":"Quntis Monitor Light Bar 40 CM, Black","category":"Peripherals & Audio"},{"url":"https://link.amazon/B0dJWUEQZ","asin":"B09KH6NFXG","image":"https://m.media-amazon.com/images/I/61HIJnrPojL._SL1500_.jpg","title":"Razer DeathAdder V2 X Hyper Speed Wireless Gaming Mouse","category":"Peripherals & Audio"},{"url":"https://link.amazon/B06VgHu89","asin":"B0DV5HWDY7","image":"https://m.media-amazon.com/images/I/71P6fIG+y7L._SL1400_.jpg","title":"Green Soul Zodiac Superb Office Chair","category":"Workspace & Maintenance"},{"url":"https://link.amazon/B0btcV4La","asin":"B00HFRRQUS","image":"https://m.media-amazon.com/images/I/71jruiaS-PL._SL1267_.jpg","title":"Inlight Map Type Projector Screen, 6 W x 4 H","category":"Content & Media"},{"url":"https://link.amazon/B01eaI9dP","asin":"B0GTQXM485","image":"https://m.media-amazon.com/images/I/517IqdlkdnL._SL1000_.jpg","title":"WZATCO Yuva Bolt, Fully Automatic Smart Home Projector","category":"Content & Media"},{"url":"https://link.amazon/B08PGWzcV","asin":"B0H7N3YKZY","image":"https://m.media-amazon.com/images/I/51J9Y1H3KgL._SL1024_.jpg","title":"EDNITA 2Pcs Mini Laptop Stand for Desk","category":"Workspace & Maintenance"},{"url":"https://link.amazon/B0h0y0InD","asin":"B09ML1JMLV","image":"https://m.media-amazon.com/images/I/81aQBkD7OLL._SL1500_.jpg","title":"KEYORA Sunset Lamp Projector LED Desk Lamp","category":"Workspace & Maintenance"},{"url":"https://link.amazon/B01nMbT71","asin":"B07D1J88CF","image":"https://m.media-amazon.com/images/I/61kqsXJelUL._SL1500_.jpg","title":"UGREEN SD Card Reader USB C USB 3.0","category":"Tech & Networking"},{"url":"https://link.amazon/B04QBSSmX","asin":"B09X7CFXSX","image":"https://m.media-amazon.com/images/I/81XikLcGGoL._SL1500_.jpg","title":"SanDisk Extreme Pro SD UHS I Card","category":"Tech & Networking"},{"url":"https://link.amazon/B0eJoXVzO","asin":"B0FBRGKXHG","image":"https://m.media-amazon.com/images/I/51vT4GzBObL._SL1500_.jpg","title":"OnePlus Bullets Wireless Z3 in-Ear Neckband","category":"Peripherals & Audio"},{"url":"https://link.amazon/B061j4huq","asin":"B0FQHGG943","image":"https://m.media-amazon.com/images/I/61yEi-KlveL._SL1024_.jpg","title":"ZORBES 360° Magnetic Phone Stand for Desk","category":"Workspace & Maintenance"},{"url":"https://link.amazon/B0bmr08F4","asin":"B0GVPYX2K9","image":"https://m.media-amazon.com/images/I/71yxK0lWhzL._SL1500_.jpg","title":"MagSafe Phone Grip Holder VANAMALI","category":"Lifestyle & Accessories"},{"url":"https://link.amazon/B09DmWaCr","asin":"B078L5J7G1","image":"https://m.media-amazon.com/images/I/41Q04ArdEuL._SL1000_.jpg","title":"D-Link DIR-825 Dual Band Wi-Fi Router","category":"Tech & Networking"},{"url":"https://link.amazon/B00yUi3a5","asin":"B0DH8BVS6Z","image":"https://m.media-amazon.com/images/I/61jRoRx6HiL._SL1500_.jpg","title":"Digitek DWM-116 Mic Wireless with Type-C & Lightning","category":"Peripherals & Audio"},{"url":"https://link.amazon/B07HftGdV","asin":"B0FHDQSFN4","image":"https://m.media-amazon.com/images/I/71nRUXKhNCL._SL1024_.jpg","title":"Verilux 240W Type C Cable Fast Charging with LED","category":"Workspace & Maintenance"},{"url":"https://link.amazon/B04n5jObk","asin":"B09FDRMZ73","image":"https://m.media-amazon.com/images/I/31ihEsr1b8L._SL1000_.jpg","title":"TP-Link UE306 USB 3.0 to Gigabit Ethernet Adapter","category":"Tech & Networking"},{"url":"https://link.amazon/B0ijABYjE","asin":"B0DQK87RJG","image":"https://m.media-amazon.com/images/I/71en8vIMOtL._SL1500_.jpg","title":"TechMaven Overhead Mobile Stand for Desk","category":"Workspace & Maintenance"},{"url":"https://link.amazon/B0dVOSnhf","asin":"B0G6XLSZLH","image":"https://m.media-amazon.com/images/I/71UwxERrxAL._SL1500_.jpg","title":"Wayona Aluminium Alloy Folding and Height Adjustable Stand","category":"Workspace & Maintenance"},{"url":"https://link.amazon/B06CJBflq","asin":"B0D1FZQLYD","image":"https://m.media-amazon.com/images/I/61s4K51Go3L._SL1500_.jpg","title":"Ambrane USB Type C Female to USB Male OTG Adapter","category":"Tech & Networking"},{"url":"https://link.amazon/B0aDzT2td","asin":"B0CQM2L6DQ","image":"https://m.media-amazon.com/images/I/71QgVgwtWcL._SL1500_.jpg","title":"Ambrane 20-in-1 Cleaning Kit for Smartphones","category":"Workspace & Maintenance"},{"url":"https://link.amazon/B0644frAR","asin":"B0FZVV6693","image":"https://m.media-amazon.com/images/I/61SEYPb6dBL._SL1500_.jpg","title":"Techie Mini DisplayPort to HDMI Converter","category":"Tech & Networking"},{"url":"https://link.amazon/B0gRXaoda","asin":"B076VF43GG","image":"https://m.media-amazon.com/images/I/711KZ2KfEpL._SL1500_.jpg","title":"Solimo 12-inch Analog Wall Clock","category":"Workspace & Maintenance"},{"url":"https://link.amazon/B0d8Fy5ZQ","asin":"B0FNRV6X18","image":"https://m.media-amazon.com/images/I/41Uy-UnZYIL._SL1200_.jpg","title":"CP PLUS 2MP Full HD Wi-Fi CCTV Camera","category":"Content & Media"},{"url":"https://link.amazon/B0cpB8tJM","asin":"B09TQT5GVM","image":"https://m.media-amazon.com/images/I/71l8EsYoDKL._SL1500_.jpg","title":"Tantra Mobile Holder for Scooty","category":"Lifestyle & Accessories"},{"url":"https://link.amazon/B07VvFDht","asin":"B0CKBND48X","image":"https://m.media-amazon.com/images/I/71pfl5uuwJL._SL1500_.jpg","title":"Boldfit Pull Up Bar Door for Home Workout","category":"Lifestyle & Accessories"},{"url":"https://link.amazon/B01ovMriv","asin":"B0BGSV19KZ","image":"https://m.media-amazon.com/images/I/61o3NqZ+13L._SL1000_.jpg","title":"Red Lemon Swiss Cut Design 15.6 Inch Smart Laptop Backpack","category":"Lifestyle & Accessories"},{"url":"https://link.amazon/B02E7NuaF","asin":"B0FSY2R459","image":"https://m.media-amazon.com/images/I/71Tq5HOL+mL._SL1500_.jpg","title":"Frido Cloud Comfort Lace-up Shoes for Men","category":"Lifestyle & Accessories"},{"url":"https://link.amazon/B057syNwY","asin":"B08HDK65K8","image":"https://m.media-amazon.com/images/I/610v5AApjgL._SL1463_.jpg","title":"Skyshop C240 Prime TPMS (Car Tyre Pressure Monitoring)","category":"Peripherals & Audio"},{"url":"https://link.amazon/B0ipYB4VG","asin":"B0D37XX7W6","image":"https://m.media-amazon.com/images/I/51EXk-CsrEL._SL1000_.jpg","title":"Qubo Digital Tyre Inflator MAX by Hero Group","category":"Lifestyle & Accessories"},{"url":"https://link.amazon/B0j0Rz0dZ","asin":"B083Q4SHPT","image":"https://m.media-amazon.com/images/I/611JfxiftvL._SL1500_.jpg","title":"UGREEN 100W USB C to USB C Cable Right Angle 1M","category":"Workspace & Maintenance"},{"url":"https://link.amazon/B0dVpyCU0","asin":"B084X7Y51M","image":"https://m.media-amazon.com/images/I/61aPGUwffDS._SL1500_.jpg","title":"Sennheiser CX 80s Wired in Ear Earphones","category":"Peripherals & Audio"},{"url":"https://link.amazon/B0ikySXoK","asin":"B09GBF7BDL","image":"https://m.media-amazon.com/images/I/61nA7fLNtkL._SL1500_.jpg","title":"Boldfit Plastic Gym Gallon Water Bottle 2.5 Liter","category":"Lifestyle & Accessories"},{"url":"https://link.amazon/B0f2EkvoA","asin":"B0DT6G93YX","image":"https://m.media-amazon.com/images/I/71YzWFc0GSL._SL1500_.jpg","title":"GCA Kitchen Utility Knife, Professional Fruit","category":"Lifestyle & Accessories"},{"url":"https://link.amazon/B0aIauGgL","asin":"B0912XTYLZ","image":"https://m.media-amazon.com/images/I/41g9dLL+IqL._SL1024_.jpg","title":"POPIO Bluetooth Remote Shutter Button","category":"Content & Media"},{"url":"https://link.amazon/B0gQvWTNs","asin":"B0DXLCDJ8L","image":"https://m.media-amazon.com/images/I/51mHA4vXlaL._SL1500_.jpg","title":"QUARANT 99.9% Pure Isopropyl Alcohol IPA for Cleaning","category":"Workspace & Maintenance"},{"url":"https://link.amazon/B0iOpZKno","asin":"B0D1G6J7DD","image":"https://m.media-amazon.com/images/I/618aKyakJZL._SL1200_.jpg","title":"Serplex 10 Pcs Vacuum Filament Bags","category":"Maker & 3D Printing"},{"url":"https://link.amazon/B01W6F39i","asin":"B08GJ57MKL","image":"https://m.media-amazon.com/images/I/91mE+0CCnGL._SL1500_.jpg","title":"Coway Airmega 150 Air Purifier For Home","category":"Workspace & Maintenance"}];
       const container = document.getElementById('gear-container');
+      const filters = document.querySelectorAll('.filter-btn');
       
-      items.forEach(item => {
-        // Use the exact high-res image extracted from the product page
-        const imgUrl = item.image || `/assets/gear-placeholder.svg`;
+      function renderGear(filter = 'all') {
+        container.innerHTML = '';
         
-        const a = document.createElement('a');
-        a.className = 'gear-item';
-        a.href = item.url;
-        a.target = '_blank';
-        a.rel = 'noopener';
+        const filtered = filter === 'all' ? gearData : gearData.filter(item => item.category === filter);
         
-        a.innerHTML = `
-          <div class="gear-image">
-            <img src="${imgUrl}" alt="${item.title}" loading="lazy" onerror="this.onerror=null; this.src='/assets/gear-placeholder.svg'; this.style.mixBlendMode='normal'; this.style.width='48px'; this.style.height='48px'; this.style.opacity='0.5';">
-          </div>
-          <div class="gear-info">
-            <h3 class="gear-title">${item.title}</h3>
-            <span class="gear-action">
-              View on Amazon 
-              <svg viewBox="0 0 24 24"><path d="M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6v2H5v12h12v-6h2zM13 3v2h4.59l-9.83 9.83 1.41 1.41L19 6.41V11h2V3h-8z"/></svg>
-            </span>
-          </div>
-        `;
-        container.appendChild(a);
+        filtered.forEach(item => {
+          const imgUrl = item.image || '/assets/gear-placeholder.svg';
+          
+          const a = document.createElement('a');
+          a.className = 'gear-card';
+          a.href = item.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          
+          a.innerHTML = `
+            <div class="gear-image-container">
+              <img src="${imgUrl}" alt="${item.title}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='/assets/gear-placeholder.svg'; this.style.opacity='0.5';">
+            </div>
+            <div class="gear-details">
+              <div>
+                <div class="gear-cat">${item.category}</div>
+                <h3 class="gear-title" title="${item.title}">${item.title}</h3>
+              </div>
+              <span class="gear-link">
+                Amazon 
+                <svg viewBox="0 0 24 24"><path d="M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6v2H5v12h12v-6h2zM13 3v2h4.59l-9.83 9.83 1.41 1.41L19 6.41V11h2V3h-8z"/></svg>
+              </span>
+            </div>
+          `;
+          container.appendChild(a);
+        });
+      }
+      
+      renderGear('all');
+      
+      filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filters.forEach(f => f.classList.remove('active'));
+          btn.classList.add('active');
+          renderGear(btn.dataset.filter);
+        });
       });
+
+      // Lazy load IG embed via IntersectionObserver to save performance
+      const igWrapper = document.getElementById('ig-wrapper');
+      if (igWrapper && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const script = document.createElement('script');
+              script.src = "//www.instagram.com/embed.js";
+              script.async = true;
+              document.body.appendChild(script);
+              observer.disconnect();
+            }
+          });
+        }, { rootMargin: "200px 0px" });
+        io.observe(igWrapper);
+      } else {
+        const script = document.createElement('script');
+        script.src = "//www.instagram.com/embed.js";
+        script.async = true;
+        document.body.appendChild(script);
+      }
     });
   </script>
 </body>
