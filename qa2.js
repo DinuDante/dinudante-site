@@ -14,7 +14,7 @@ if (schemaMatch) {
   schemaItemListCount = schema.itemListElement.length;
 }
 
-const filterAllMatch = html.match(/data-filter="all">ALL GEAR <span>(\d+)<\/span>/);
+const filterAllMatch = html.match(/id="catalogue-count".*?>(\d+)\s+items<\/span>/);
 const filterAllCount = filterAllMatch ? parseInt(filterAllMatch[1]) : 0;
 
 console.log('uniqueDatasetCount:', uniqueDatasetCount);
