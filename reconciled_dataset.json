@@ -10,9 +10,7 @@
     "primaryCategory": "AUDIO",
     "tags": [],
     "personallyTested": true,
-    "featured": true,
-    "url": "https://link.amazon/B00cfvIN8",
-    "category": "AUDIO"
+    "featured": true
   },
   {
     "inputIndex": 2,
@@ -25,9 +23,7 @@
     "primaryCategory": "AUDIO",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0j7Wc1BV",
-    "category": "AUDIO"
+    "featured": false
   },
   {
     "inputIndex": 3,
@@ -40,9 +36,7 @@
     "primaryCategory": "MAKER & 3D PRINTING",
     "tags": [],
     "personallyTested": true,
-    "featured": true,
-    "url": "https://www.amazon.in/dp/B0FQN7QDFC?th=1&linkCode=ll2&tag=dinudanteweb-21&linkId=fdc589f7f0abe5dc38dd300913c21346&ref_=as_li_ss_tl",
-    "category": "MAKER & 3D PRINTING"
+    "featured": true
   },
   {
     "inputIndex": 4,
@@ -55,9 +49,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B08rJ087i",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 5,
@@ -70,9 +62,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": true,
-    "url": "https://link.amazon/B09arPLbc",
-    "category": "COMPUTING & MOBILE"
+    "featured": true
   },
   {
     "inputIndex": 6,
@@ -85,9 +75,7 @@
     "primaryCategory": "CREATOR GEAR",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B06gWgx0x",
-    "category": "CREATOR GEAR"
+    "featured": false
   },
   {
     "inputIndex": 7,
@@ -100,9 +88,7 @@
     "primaryCategory": "AUDIO",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0gbt56Mx",
-    "category": "AUDIO"
+    "featured": false
   },
   {
     "inputIndex": 8,
@@ -115,9 +101,7 @@
     "primaryCategory": "POWER & CHARGING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B09gp6mTW",
-    "category": "POWER & CHARGING"
+    "featured": false
   },
   {
     "inputIndex": 9,
@@ -130,9 +114,7 @@
     "primaryCategory": "CREATOR GEAR",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0eK9mr0I",
-    "category": "CREATOR GEAR"
+    "featured": false
   },
   {
     "inputIndex": 10,
@@ -145,9 +127,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0imlfWsj",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 11,
@@ -160,9 +140,7 @@
     "primaryCategory": "POWER & CHARGING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0iJInWKV",
-    "category": "POWER & CHARGING"
+    "featured": false
   },
   {
     "inputIndex": 12,
@@ -175,9 +153,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0iloEK1X",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 13,
@@ -190,9 +166,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0a0is7aE",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 14,
@@ -205,9 +179,7 @@
     "primaryCategory": "MAKER & 3D PRINTING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B09bCmKfR",
-    "category": "MAKER & 3D PRINTING"
+    "featured": false
   },
   {
     "inputIndex": 15,
@@ -220,9 +192,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0aZd36Ka",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 16,
@@ -235,9 +205,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://www.amazon.in/dp/B0CRB1HP5H?th=1&linkCode=ll2&tag=dinudanteweb-21&linkId=1af183c12deef1737283cf9e5891d203&ref_=as_li_ss_tl",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 17,
@@ -250,9 +218,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0cxudNtS",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 18,
@@ -265,9 +231,7 @@
     "primaryCategory": "DISPLAYS",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B02u9HZSI",
-    "category": "DISPLAYS"
+    "featured": false
   },
   {
     "inputIndex": 19,
@@ -280,9 +244,7 @@
     "primaryCategory": "MAKER & 3D PRINTING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B04lbn96U",
-    "category": "MAKER & 3D PRINTING"
+    "featured": false
   },
   {
     "inputIndex": 20,
@@ -295,9 +257,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0hK9tOut",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 21,
@@ -310,9 +270,7 @@
     "primaryCategory": "POWER & CHARGING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B09zcX6zC",
-    "category": "POWER & CHARGING"
+    "featured": false
   },
   {
     "inputIndex": 22,
@@ -325,9 +283,7 @@
     "primaryCategory": "INPUT & CONTROL",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B018QQPnu",
-    "category": "INPUT & CONTROL"
+    "featured": false
   },
   {
     "inputIndex": 23,
@@ -340,9 +296,7 @@
     "primaryCategory": "POWER & CHARGING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B05MFRnQl",
-    "category": "POWER & CHARGING"
+    "featured": false
   },
   {
     "inputIndex": 24,
@@ -355,9 +309,7 @@
     "primaryCategory": "MAKER & 3D PRINTING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0434D7Ti",
-    "category": "MAKER & 3D PRINTING"
+    "featured": false
   },
   {
     "inputIndex": 25,
@@ -370,9 +322,7 @@
     "primaryCategory": "AUDIO",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0iov150d",
-    "category": "AUDIO"
+    "featured": false
   },
   {
     "inputIndex": 26,
@@ -385,9 +335,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0gQRMXho",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 27,
@@ -400,9 +348,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0eSnuqkw",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 28,
@@ -415,9 +361,7 @@
     "primaryCategory": "POWER & CHARGING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B03lRim1x",
-    "category": "POWER & CHARGING"
+    "featured": false
   },
   {
     "inputIndex": 29,
@@ -430,9 +374,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B02Jq8cVv",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 30,
@@ -445,9 +387,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B06Simbv1",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 31,
@@ -460,9 +400,7 @@
     "primaryCategory": "INPUT & CONTROL",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B014UhFw3",
-    "category": "INPUT & CONTROL"
+    "featured": false
   },
   {
     "inputIndex": 32,
@@ -475,9 +413,7 @@
     "primaryCategory": "CREATOR GEAR",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0fJ7ozID",
-    "category": "CREATOR GEAR"
+    "featured": false
   },
   {
     "inputIndex": 33,
@@ -490,9 +426,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0etrQZIU",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 34,
@@ -505,9 +439,7 @@
     "primaryCategory": "POWER & CHARGING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B07UN4VBX",
-    "category": "POWER & CHARGING"
+    "featured": false
   },
   {
     "inputIndex": 35,
@@ -520,9 +452,7 @@
     "primaryCategory": "POWER & CHARGING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0bhWqI5P",
-    "category": "POWER & CHARGING"
+    "featured": false
   },
   {
     "inputIndex": 36,
@@ -535,9 +465,7 @@
     "primaryCategory": "CREATOR GEAR",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B00dVVGF7",
-    "category": "CREATOR GEAR"
+    "featured": false
   },
   {
     "inputIndex": 37,
@@ -550,9 +478,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B00m7PeSV",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 38,
@@ -565,9 +491,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0gLMAzMl",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 39,
@@ -580,9 +504,7 @@
     "primaryCategory": "MAKER & 3D PRINTING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0dZzvDmS",
-    "category": "MAKER & 3D PRINTING"
+    "featured": false
   },
   {
     "inputIndex": 40,
@@ -595,9 +517,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B035VV0Pq",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 41,
@@ -610,9 +530,7 @@
     "primaryCategory": "CREATOR GEAR",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0gATBxV0",
-    "category": "CREATOR GEAR"
+    "featured": false
   },
   {
     "inputIndex": 42,
@@ -625,9 +543,7 @@
     "primaryCategory": "AUDIO",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B07CbOgXG",
-    "category": "AUDIO"
+    "featured": false
   },
   {
     "inputIndex": 43,
@@ -640,9 +556,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B04ysVcb8",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 44,
@@ -655,9 +569,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B053aQelU",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 45,
@@ -670,9 +582,7 @@
     "primaryCategory": "MAKER & 3D PRINTING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B07qMVzY6",
-    "category": "MAKER & 3D PRINTING"
+    "featured": false
   },
   {
     "inputIndex": 46,
@@ -685,9 +595,7 @@
     "primaryCategory": "DISPLAYS",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0j5pnTJz",
-    "category": "DISPLAYS"
+    "featured": false
   },
   {
     "inputIndex": 47,
@@ -700,9 +608,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0etdrh6u",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 48,
@@ -715,9 +621,7 @@
     "primaryCategory": "MAKER & 3D PRINTING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B05laeofD",
-    "category": "MAKER & 3D PRINTING"
+    "featured": false
   },
   {
     "inputIndex": 49,
@@ -734,9 +638,7 @@
     "sourceUrls": [
       "https://link.amazon/B00UZmPB4",
       "https://link.amazon/B07KWxy4q"
-    ],
-    "url": "https://link.amazon/B00UZmPB4",
-    "category": "WORKSPACE"
+    ]
   },
   {
     "inputIndex": 51,
@@ -749,9 +651,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0huO92Eg",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 52,
@@ -764,9 +664,7 @@
     "primaryCategory": "AUDIO",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B08fyAOoK",
-    "category": "AUDIO"
+    "featured": false
   },
   {
     "inputIndex": 53,
@@ -779,9 +677,7 @@
     "primaryCategory": "INPUT & CONTROL",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0394pvMt",
-    "category": "INPUT & CONTROL"
+    "featured": false
   },
   {
     "inputIndex": 54,
@@ -794,9 +690,7 @@
     "primaryCategory": "INPUT & CONTROL",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B06Py1rTG",
-    "category": "INPUT & CONTROL"
+    "featured": false
   },
   {
     "inputIndex": 55,
@@ -809,9 +703,7 @@
     "primaryCategory": "INPUT & CONTROL",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B08V2Vknk",
-    "category": "INPUT & CONTROL"
+    "featured": false
   },
   {
     "inputIndex": 56,
@@ -824,9 +716,7 @@
     "primaryCategory": "DISPLAYS",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B07krLm6F",
-    "category": "DISPLAYS"
+    "featured": false
   },
   {
     "inputIndex": 57,
@@ -839,9 +729,7 @@
     "primaryCategory": "INPUT & CONTROL",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0dJWUEQZ",
-    "category": "INPUT & CONTROL"
+    "featured": false
   },
   {
     "inputIndex": 58,
@@ -854,9 +742,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B06VgHu89",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 59,
@@ -869,9 +755,7 @@
     "primaryCategory": "DISPLAYS",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0btcV4La",
-    "category": "DISPLAYS"
+    "featured": false
   },
   {
     "inputIndex": 60,
@@ -884,9 +768,7 @@
     "primaryCategory": "DISPLAYS",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B01eaI9dP",
-    "category": "DISPLAYS"
+    "featured": false
   },
   {
     "inputIndex": 61,
@@ -899,9 +781,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B08PGWzcV",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 62,
@@ -914,9 +794,7 @@
     "primaryCategory": "DISPLAYS",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0h0y0InD",
-    "category": "DISPLAYS"
+    "featured": false
   },
   {
     "inputIndex": 63,
@@ -929,9 +807,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B01nMbT71",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 64,
@@ -944,9 +820,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B04QBSSmX",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 65,
@@ -959,9 +833,7 @@
     "primaryCategory": "INPUT & CONTROL",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0eJoXVzO",
-    "category": "INPUT & CONTROL"
+    "featured": false
   },
   {
     "inputIndex": 66,
@@ -974,9 +846,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B061j4huq",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 67,
@@ -989,9 +859,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0bmr08F4",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 68,
@@ -1004,9 +872,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B09DmWaCr",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 69,
@@ -1019,9 +885,7 @@
     "primaryCategory": "INPUT & CONTROL",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B00yUi3a5",
-    "category": "INPUT & CONTROL"
+    "featured": false
   },
   {
     "inputIndex": 70,
@@ -1034,9 +898,7 @@
     "primaryCategory": "POWER & CHARGING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B07HftGdV",
-    "category": "POWER & CHARGING"
+    "featured": false
   },
   {
     "inputIndex": 71,
@@ -1049,9 +911,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B04n5jObk",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 72,
@@ -1064,9 +924,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0ijABYjE",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 73,
@@ -1079,9 +937,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0dVOSnhf",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 74,
@@ -1094,9 +950,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B06CJBflq",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 75,
@@ -1109,9 +963,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0aDzT2td",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 76,
@@ -1124,9 +976,7 @@
     "primaryCategory": "MAKER & 3D PRINTING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0644frAR",
-    "category": "MAKER & 3D PRINTING"
+    "featured": false
   },
   {
     "inputIndex": 77,
@@ -1139,9 +989,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0gRXaoda",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 78,
@@ -1154,9 +1002,7 @@
     "primaryCategory": "CREATOR GEAR",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0d8Fy5ZQ",
-    "category": "CREATOR GEAR"
+    "featured": false
   },
   {
     "inputIndex": 79,
@@ -1169,9 +1015,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0cpB8tJM",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 80,
@@ -1184,9 +1028,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B07VvFDht",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 81,
@@ -1199,9 +1041,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B01ovMriv",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 82,
@@ -1214,9 +1054,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B02E7NuaF",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 83,
@@ -1229,9 +1067,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B057syNwY",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 84,
@@ -1244,9 +1080,7 @@
     "primaryCategory": "COMPUTING & MOBILE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0ipYB4VG",
-    "category": "COMPUTING & MOBILE"
+    "featured": false
   },
   {
     "inputIndex": 85,
@@ -1259,9 +1093,7 @@
     "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0j0Rz0dZ",
-    "category": "STORAGE & CONNECTIVITY"
+    "featured": false
   },
   {
     "inputIndex": 86,
@@ -1274,9 +1106,7 @@
     "primaryCategory": "INPUT & CONTROL",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0dVpyCU0",
-    "category": "INPUT & CONTROL"
+    "featured": false
   },
   {
     "inputIndex": 87,
@@ -1289,9 +1119,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0ikySXoK",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 88,
@@ -1304,9 +1132,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0f2EkvoA",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 89,
@@ -1319,9 +1145,7 @@
     "primaryCategory": "CREATOR GEAR",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0aIauGgL",
-    "category": "CREATOR GEAR"
+    "featured": false
   },
   {
     "inputIndex": 90,
@@ -1334,9 +1158,7 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0gQvWTNs",
-    "category": "WORKSPACE"
+    "featured": false
   },
   {
     "inputIndex": 91,
@@ -1349,9 +1171,7 @@
     "primaryCategory": "MAKER & 3D PRINTING",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B0iOpZKno",
-    "category": "MAKER & 3D PRINTING"
+    "featured": false
   },
   {
     "inputIndex": 92,
@@ -1364,8 +1184,6 @@
     "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
-    "featured": false,
-    "url": "https://link.amazon/B01W6F39i",
-    "category": "WORKSPACE"
+    "featured": false
   }
 ]
