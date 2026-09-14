@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0d1512">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://dinudante.in/setup.html">
+  <title>Setup & Gear — Dinesh Behera | Dinu | DinuDante</title>
+  <meta name="description" content="A curated list of my workspace setup, gear, and tools.">
+  <script src="/assets/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/home.css">
+  <link rel="stylesheet" href="/assets/site.css?v=bba3dc48c36e">
+  <style>
+    .setup-hero { padding: 90px 0 40px; text-align: center; }
+    .setup-hero h1 { margin: 10px auto; }
+    
+    .setup-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 80px;
+    }
+    .setup-photo {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--surface);
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .setup-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.85);
+    }
+    .setup-photo:before {
+      content: "Instagram Photo";
+      position: absolute;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 0;
+    }
+    .setup-photo img { position: relative; z-index: 1; }
+    
+    .gear-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .gear-item {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .gear-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--green);
+      box-shadow: 0 12px 30px var(--shadow);
+    }
+    .gear-image {
+      aspect-ratio: 1;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .gear-image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+    [data-theme="night"] .gear-image img {
+      /* Invert or adjust product images if they have white backgrounds in dark mode */
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+      mix-blend-mode: normal;
+    }
+    .gear-info {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .gear-title {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin: 0 0 10px 0;
+      line-height: 1.4;
+      font-family: system-ui, sans-serif;
+    }
+    .gear-action {
+      color: var(--green);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .gear-action svg { width: 14px; height: 14px; fill: currentColor; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <nav class="site-nav shell" aria-label="Main navigation">
+    <a class="mark" href="/" aria-label="Go to home"><span class="mark-symbol" aria-hidden="true">日</span><span class="mark-name">DINESH BEHERA | DINU | DINUDANTE</span></a>
+    <div class="nav-actions"><button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false">Menu</button><div class="nav-links" id="main-navigation"><a class="nav-link" href="/#professional">Profile</a><a class="nav-link" href="resume.html">Resume</a><a class="nav-link" href="/#academy">Learn</a><a class="nav-link" href="/#maker">Maker</a><a class="nav-link" href="setup.html">Setup</a><a class="nav-link" href="/#about">About</a></div><div class="theme-control"><span class="theme-label" aria-hidden="true">dark</span><button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false"></button></div></div>
+  </nav>
+  
+  <main id="main-content" tabindex="-1">
+    <header class="shell setup-hero">
+      <div class="eyebrow">Workspace · Hardware · Tools</div>
+      <h1>My Setup</h1>
+      <p class="intro" style="margin: 0 auto; max-width: 600px;">A curated look at my workspace, hardware, and everyday tools. Built for cloud engineering, coding, teaching, and maker projects.</p>
+    </header>
+
+    <div class="divider shell" style="margin-top: 40px; margin-bottom: 60px;"><span>GALLERY · INSTAGRAM</span></div>
+    
+    <section class="shell">
+      <div class="setup-gallery">
+        <!-- Placeholder photos for Instagram setup shots -->
+        <div class="setup-photo"><img src="assets/setup-1.webp" alt="Desk setup view 1" loading="lazy" onerror="this.style.opacity='0'"></div>
+        <div class="setup-photo"><img src="assets/setup-2.webp" alt="Desk setup view 2" loading="lazy" onerror="this.style.opacity='0'"></div>
+        <div class="setup-photo"><img src="assets/setup-3.webp" alt="Desk setup view 3" loading="lazy" onerror="this.style.opacity='0'"></div>
+      </div>
+    </section>
+
+    <div class="divider shell"><span>ギア · HARDWARE & GEAR</span></div>
+    
+    <section class="shell" style="padding-bottom: 120px;">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Affiliate Links</span>
+          <h2 style="font:400 clamp(1.8rem,4vw,2.8rem) Georgia,serif; margin-top:8px;">The tools that power the work.</h2>
+        </div>
+      </div>
+      
+      <div class="gear-grid" id="gear-container">
+        <!-- Gear items will be populated by JS -->
+      </div>
+    </section>
+  </main>
+  
+  <footer><div class="footer-row shell"><span>© 2026 Dinesh Behera | Dinu | DinuDante · Bhubaneswar</span><div class="footer-links"><a href="/privacy/">Privacy</a>
+    <a href="https://www.instagram.com/ddprinterz/" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm11.5 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg> DDPrinterZ Instagram ↗</a>
+    <a href="https://www.youtube.com/@DDPrinterZ" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.7V8.3l6.3 3.7-6.3 3.7Z"/></svg> DDPrinterZ YouTube ↗</a>
+    <a href="https://wa.me/919040632014" target="_blank" rel="noopener"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.2-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.4-.2-3 .8.8-2.9-.2-.4A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.5-3.3-3-.2-.3 0-.4.1-.6l.5-.6c.1-.2.1-.4 0-.6l-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1.1 1.5-1 2.5.1 1.2.8 2.5 1 2.7.1.2 2 3.2 5 4.3.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.2-.2-.4-.3l-1.8-.8Z"/></svg> WhatsApp</a>
+    <a href="mailto:dineshdante.ds@gmail.com"><svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5Zm2 2v.5l8 5 8-5V7H4Zm16 10V9.8l-8 5-8-5V17h16Z"/></svg> Email</a>
+  </div></div></footer>
+  
+  <script src="/assets/site.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const links = [
+        "https://link.amazon/B08V2Vknk", "https://link.amazon/B07krLm6F", "https://link.amazon/B0dJWUEQZ", "https://link.amazon/B06VgHu89",
+        "https://link.amazon/B0btcV4La", "https://link.amazon/B01eaI9dP", "https://link.amazon/B08PGWzcV", "https://link.amazon/B0h0y0InD",
+        "https://link.amazon/B01nMbT71", "https://link.amazon/B04QBSSmX", "https://link.amazon/B0eJoXVzO", "https://link.amazon/B061j4huq",
+        "https://link.amazon/B0bmr08F4", "https://link.amazon/B09DmWaCr", "https://link.amazon/B00yUi3a5", "https://link.amazon/B07HftGdV",
+        "https://link.amazon/B04n5jObk", "https://link.amazon/B0ijABYjE", "https://link.amazon/B0dVOSnhf", "https://link.amazon/B06CJBflq",
+        "https://link.amazon/B0aDzT2td", "https://link.amazon/B0644frAR", "https://link.amazon/B0gRXaoda", "https://link.amazon/B0d8Fy5ZQ",
+        "https://link.amazon/B0cpB8tJM", "https://link.amazon/B07VvFDht", "https://link.amazon/B01ovMriv", "https://link.amazon/B02E7NuaF",
+        "https://link.amazon/B057syNwY", "https://link.amazon/B0ipYB4VG", "https://link.amazon/B0j0Rz0dZ", "https://link.amazon/B0dVpyCU0",
+        "https://link.amazon/B0ikySXoK", "https://link.amazon/B0f2EkvoA", "https://link.amazon/B0aIauGgL", "https://link.amazon/B0gQvWTNs",
+        "https://link.amazon/B0iOpZKno", "https://link.amazon/B01W6F39i"
+      ];
+
+      const container = document.getElementById('gear-container');
+      
+      links.forEach(url => {
+        // Extract the ID from the end of the URL
+        const idMatch = url.match(/\/([A-Z0-9]+)$/i);
+        const id = idMatch ? idMatch[1] : "Gear";
+        
+        // Construct standard Amazon image fetch URL (attempt)
+        // If it fails, the onerror handler hides the image and shows the container bg.
+        const imgUrl = `https://images-na.ssl-images-amazon.com/images/P/${id}.01.LZZZZZZZ.jpg`;
+        
+        const a = document.createElement('a');
+        a.className = 'gear-item';
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        
+        a.innerHTML = `
+          <div class="gear-image">
+            <img src="${imgUrl}" alt="Product ${id}" loading="lazy" onerror="this.style.opacity='0'">
+          </div>
+          <div class="gear-info">
+            <h3 class="gear-title">Amazon Setup Gear (${id})</h3>
+            <span class="gear-action">
+              View on Amazon 
+              <svg viewBox="0 0 24 24"><path d="M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6v2H5v12h12v-6h2zM13 3v2h4.59l-9.83 9.83 1.41 1.41L19 6.41V11h2V3h-8z"/></svg>
+            </span>
+          </div>
+        `;
+        container.appendChild(a);
+      });
+    });
+  </script>
+</body>
+</html>
