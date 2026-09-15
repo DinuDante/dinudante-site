@@ -73,7 +73,7 @@ svg { max-width: 100%; }
 
 /* Navigation Shared Components */
 .site-nav { position: relative; position: -webkit-sticky; position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; min-height: 76px; padding: 10px 20px; width: 100%; }
-.site-nav::before { content: ""; position: absolute; inset: 0; background: color-mix(in srgb, var(--bg) 86%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); z-index: -1; pointer-events: none; }
+.site-nav::before { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: var(--bg); background: color-mix(in srgb, var(--bg) 86%, transparent); border-bottom: 1px solid var(--line); border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); z-index: -1; pointer-events: none; }
 .site-nav::after { content: ""; position: absolute; inset: auto 0 -1px; height: 1px; background: linear-gradient(90deg, transparent, var(--red), var(--paper), var(--purple), var(--green), transparent); opacity: 0.45; z-index: -1; pointer-events: none; }
 
 .mark { display: flex; align-items: center; gap: 11px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; white-space: nowrap; }
