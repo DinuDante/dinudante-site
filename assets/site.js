@@ -44,15 +44,12 @@
     links.classList.remove('is-open');
     if (restoreFocus) menu.focus();
   }
-  const toggleMenu = (event) => {
-    if (event.type === 'touchstart') event.preventDefault();
+  menu.addEventListener('click', (event) => {
     event.stopPropagation();
     const open = menu.getAttribute('aria-expanded') !== 'true';
     menu.setAttribute('aria-expanded', String(open));
     links.classList.toggle('is-open', open);
-  };
-  menu.addEventListener('click', toggleMenu);
-  menu.addEventListener('touchstart', toggleMenu, { passive: false });
+  });
   links.addEventListener('click', event => {
     const link = event.target.closest('a');
     if (!link) return;
@@ -61,8 +58,6 @@
       closeMenu();
       const target = document.querySelector(link.hash);
       if (target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
-    } else {
-      setTimeout(() => closeMenu(), 150);
     }
   });
   document.addEventListener('keydown', event => {
