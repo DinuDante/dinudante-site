@@ -85,7 +85,7 @@ section { scroll-margin-top: calc(var(--nav-height) + 16px); }
 
 /* ----------------------------------------------------- profile panels */
 
-.profile-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr); gap: 20px; }
+.profile-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr); gap: 20px; align-items: start; }
 .panel {
   position: relative; overflow: hidden;
   padding: clamp(24px, 3.4vw, 42px);
