@@ -25,6 +25,7 @@ async function main() {
   await sharp(MASTER_LOGO).resize(512, 512, { fit: 'cover' }).png({ compressionLevel: 9, palette: true }).toFile('assets/icon-512.png');
   await sharp(MASTER_LOGO).resize(32, 32, { fit: 'cover' }).png({ compressionLevel: 9 }).toFile('assets/favicon-32x32.png');
   await sharp(MASTER_LOGO).resize(16, 16, { fit: 'cover' }).png({ compressionLevel: 9 }).toFile('assets/favicon-16x16.png');
+  await sharp(MASTER_LOGO).resize(32, 32, { fit: 'cover' }).toFile('favicon.ico');
 
   // Small portrait variant for the print/PDF layout, so the downloadable
   // résumé does not embed a 720x960 image inside a 26 mm box.
