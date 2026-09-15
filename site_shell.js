@@ -23,11 +23,11 @@ const ICONS = {
 // Primary navigation. `hash` entries resolve against the homepage.
 const NAV = [
   { id: 'professional', label: 'Profile', hash: '#professional' },
-  { id: 'resume', label: 'Résumé', path: '/resume.html' },
-  { id: 'academy', label: 'Teaching', hash: '#academy' },
+  { id: 'experience', label: 'Experience', hash: '#experience' },
+  { id: 'academy', label: 'Learn', hash: '#academy' },
   { id: 'maker', label: 'Maker', hash: '#maker' },
   { id: 'setup', label: 'Setup', path: '/setup.html' },
-  { id: 'about', label: 'About', hash: '#about' }
+  { id: 'resume', label: 'Résumé', path: '/resume.html' }
 ];
 
 function nav(page) {

@@ -68,7 +68,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       }));
       check('toggle changes the theme', after.theme !== before.theme, `${before.theme} -> ${after.theme}`);
       check('toggle updates label, pressed state and theme-color',
-        after.label !== before.label && after.pressed !== before.pressed && after.meta !== '#0d1512' === (after.theme === 'day'),
+        after.label !== before.label && after.pressed !== before.pressed && after.meta !== '#0c100e' === (after.theme === 'day'),
         JSON.stringify({ label: after.label, pressed: after.pressed, meta: after.meta }));
       check('choice persisted to localStorage', after.stored === after.theme, after.stored);
 
@@ -200,14 +200,14 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       // Selecting an in-page link closes the menu and moves focus to the target.
       await page.click('.menu-toggle');
       await sleep(120);
-      await page.click('#main-navigation a[href="#about"]');
+      await page.click('#main-navigation a[href="#maker"]');
       await sleep(600);
       const afterNav = await page.evaluate(() => ({
         expanded: document.querySelector('.menu-toggle').getAttribute('aria-expanded'),
         focusedId: document.activeElement.id
       }));
       check('selecting a link closes the menu and focuses the section',
-        afterNav.expanded === 'false' && afterNav.focusedId === 'about', JSON.stringify(afterNav));
+        afterNav.expanded === 'false' && afterNav.focusedId === 'maker', JSON.stringify(afterNav));
 
       // Opening then widening must not leave a broken desktop header.
       await page.click('.menu-toggle');

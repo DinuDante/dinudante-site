@@ -10,7 +10,7 @@
   const toggle = document.querySelector('.theme-toggle');
   const label = document.querySelector('.theme-label');
   const meta = document.querySelector('meta[name="theme-color"]');
-  const THEME_COLOR = { day: '#e5e3d8', night: '#0d1512' };
+  const THEME_COLOR = { day: '#faf8f3', night: '#0c100e' };
 
   let explicit = false;
   try { explicit = ['day', 'night'].includes(localStorage.getItem('dinu-theme')); } catch (_) {}
