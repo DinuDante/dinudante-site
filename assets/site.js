@@ -23,9 +23,15 @@
       syncTheme();
     });
   }
-  matchMedia('(prefers-color-scheme: light)').addEventListener('change', event => {
+  const mql = matchMedia('(prefers-color-scheme: light)');
+  const mqlChange = event => {
     if (!explicit) { root.dataset.theme = event.matches ? 'day' : 'night'; syncTheme(); }
-  });
+  };
+  if (mql.addEventListener) {
+    mql.addEventListener('change', mqlChange);
+  } else if (mql.addListener) {
+    mql.addListener(mqlChange);
+  }
   syncTheme();
 
   const menu = document.querySelector('.menu-toggle');
@@ -38,19 +44,25 @@
     links.classList.remove('is-open');
     if (restoreFocus) menu.focus();
   }
-  menu.addEventListener('click', (event) => {
+  const toggleMenu = (event) => {
+    if (event.type === 'touchstart') event.preventDefault();
     event.stopPropagation();
     const open = menu.getAttribute('aria-expanded') !== 'true';
     menu.setAttribute('aria-expanded', String(open));
     links.classList.toggle('is-open', open);
-  });
+  };
+  menu.addEventListener('click', toggleMenu);
+  menu.addEventListener('touchstart', toggleMenu, { passive: false });
   links.addEventListener('click', event => {
     const link = event.target.closest('a');
     if (!link) return;
-    closeMenu();
+    
     if (link.hash && link.pathname === location.pathname) {
+      closeMenu();
       const target = document.querySelector(link.hash);
       if (target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
+    } else {
+      setTimeout(() => closeMenu(), 150);
     }
   });
   document.addEventListener('keydown', event => {
