@@ -57,3 +57,112 @@ No stock photography, no invented project screenshots, no fabricated client
 logos, no generated "server room" imagery, and no illustration presented as
 evidence of work. Where authentic material does not exist, the section is
 typographic instead.
+
+
+---
+
+# Instagram photography request — 16 September 2026
+
+Requested: use authentic photographs from the owner's verified personal Instagram
+account wherever they strengthen the portfolio, with source post URLs recorded here.
+
+**Outcome: retrieval is blocked, and no photograph was added or changed.** No
+placeholder, stock or generated image was substituted. Everything below is what
+was actually attempted and what is actually needed.
+
+## The handle, taken from the repository rather than guessed
+
+Searching every tracked and untracked file for an Instagram URL or handle returns
+exactly one account, in 42 places:
+
+| Handle | Link text on the site | Where |
+| --- | --- | --- |
+| `https://www.instagram.com/ddprinterz/` | "DDPrinterZ on Instagram" | `index.html`, `resume.html`, `setup.html`, `404.html`, `privacy/index.html`, `site_shell.js` |
+
+**No personal account handle exists anywhere in the repository.** `ddprinterz` is
+the DDPrinterZ *studio* account — the maker identity, per `PROJECT_CONTEXT.md` —
+not a personal profile. The instruction was not to guess the handle, so none was
+guessed and no other account was contacted. If a separate personal account should
+be used, its handle has to be supplied; it is not derivable from this repository.
+
+## Retrieval attempts and their exact results
+
+All against the one verified handle, on 16 September 2026:
+
+| Method | Result |
+| --- | --- |
+| `WebFetch https://www.instagram.com/ddprinterz/` | Returned the page title only. No posts, captions, image URLs or bio. |
+| `curl` the profile with a current desktop browser user-agent | HTTP 200, 629,386 bytes — but it is the logged-out JavaScript shell. Markers `PolarisLoggedOut` / `LoggedOut` present. **Zero** `cdninstagram`/`fbcdn` image URLs, **zero** `/p/<shortcode>/` post links, and none of `biography`, `profile_pic_url_hd` or `edge_owner_to_timeline_media`. `<title>` is the generic `Instagram`. |
+| `GET /?__a=1&__d=dis` | HTTP 201, 0 bytes. |
+| `GET i.instagram.com/api/v1/users/web_profile_info/?username=ddprinterz` with the public web app id | HTTP 401 — `{"require_login":true,"status":"fail"}`. |
+| Browser automation against the owner's own signed-in Chrome | Unavailable: "Claude in Chrome is turned off in your settings." |
+
+Instagram serves no post data to logged-out clients. This is a platform access
+control, not a site defect, and it is not something to work around.
+
+## Photographic originals that do exist locally
+
+The complete inventory, verified by decoding each file rather than reading names:
+
+| File | Dimensions | Type | Assessment |
+| --- | --- | --- | --- |
+| `assets/dinesh-professional.webp` | 720 × 960 | Photograph — studio headshot, suit, grey backdrop | In use: homepage hero, résumé header, share card |
+| `assets/dinesh-maker.webp` | 720 × 926 | Photograph — studio headshot, olive polo, **white backdrop** | In use: DDPrinterZ section |
+| `masters/logo.png` | 1254 × 1254 | **Not a photograph** — stylised illustrated avatar in a gold ring | Brand mark only; source for the nav mark and icons |
+
+There is no workshop, 3D-print, teaching, classroom, desk or project photograph
+anywhere in the repository. Both photographs are plain studio headshots.
+
+**The existing hero portrait is not a resolution compromise.** The largest it ever
+renders is 358 × 478 CSS px, at 2560 px viewport; a 2× device needs 716 × 956, and
+the original is 720 × 960. It is correctly sized, and was left unchanged as
+instructed — no better authentic photograph is available to replace it.
+
+Product photography was not touched: all 93 remain the marketplace's own image for
+the exact listing each record links to.
+
+## Exact missing exports
+
+Supply these as original-quality files (straight from the camera or the Instagram
+"Download your information" export — not screenshots, not re-saved from the feed at
+display size). For each, the post URL is needed so it can be recorded here.
+
+Minimum pixel sizes are 2× the largest size the slot ever renders, measured on the
+built page at 390 / 768 / 1440 / 2560 px viewports.
+
+| # | Placement | Why it strengthens the section | Aspect | Minimum source | Deliberate mobile crop |
+| ---: | --- | --- | --- | --- | --- |
+| 1 | DDPrinterZ section — replace the studio headshot | The brief asks for "an actual DDPrinterZ creation or a real workshop image that explains the work". A white-backdrop headshot shows nothing about the making. | 4:3 landscape | **2400 × 1800** | Subject in the central 60% so a 1:1 phone crop still reads |
+| 2 | DDPrinterZ section — a finished print, shot plainly | Evidence of output, matching the Design / Engineering / Storytelling trio | 1:1 | **1600 × 1600** | Object centred, even margin |
+| 3 | ProLEAP Academy section — a genuine teaching or lab moment | That section is currently typographic with no image at all | 3:2 landscape | **2400 × 1600** | **Faces of students must not be identifiable without their consent** — prefer over-the-shoulder, hands-on-keyboard or whiteboard framing |
+| 4 | Professional / engineering section — a real workspace | The brief forbids stock server-room imagery as proof; a genuine desk is the honest alternative | 3:2 landscape | **2400 × 1600** | **No client names, hostnames, IPs, dashboards or ticket IDs legible on any screen** |
+| 5 | Optional: an alternative hero portrait | Only if a clearly better authentic photograph exists; otherwise the current one stays | 3:4 portrait | **1440 × 1920** | Eyeline in the upper third, matching `object-position: center 18%` |
+
+Naming when they arrive: `assets/ddprinterz-workshop.webp`,
+`assets/ddprinterz-print.webp`, `assets/proleap-teaching.webp`,
+`assets/workspace.webp`. Each gets `srcset` variants at 1×/2× for its slot,
+explicit `width`/`height`, `loading="lazy"` below the fold, and a row in the
+Portraits/Imagery table above with its source post URL, capture context and alt
+text.
+
+## Treatment the new photographs will get
+
+Defined now so the work is mechanical once the files exist, and so the result stays
+consistent with the catalogue's existing discipline:
+
+- One fixed aspect box per slot with the image placed absolutely inside it, the same
+  technique the product cards use — a tall or wide photograph cannot then stretch its
+  container or shift the row. (See the 16 September fix in `QA_REPORT.md`.)
+- A single neutral plate behind every photograph in both themes, so images do not
+  glow in dark mode or wash out in light mode.
+- `object-position` set per image from its real focal point, not left at `center`.
+- No filters, no colour grading, no vignettes, no text baked into any image.
+- Contrast re-checked with axe in both themes after each image lands, because
+  captions and badges over photography are where contrast regressions appear.
+
+## What was deliberately not done
+
+No stock photograph, no AI-generated "workshop" or "server room" image, no
+illustration presented as project evidence, and no image pulled from an account
+other than the one verified link in this repository. Where authentic material does
+not exist, the section stays typographic — which is what it does today.
