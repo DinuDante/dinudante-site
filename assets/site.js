@@ -15,12 +15,14 @@
     if (label) label.textContent = day ? 'light' : 'dark';
     if (meta) meta.content = day ? '#e5e3d8' : '#0d1512';
   }
-  toggle?.addEventListener('click', () => {
-    root.dataset.theme = root.dataset.theme === 'night' ? 'day' : 'night';
-    explicit = true;
-    try { localStorage.setItem('dinu-theme', root.dataset.theme); } catch (_) {}
-    syncTheme();
-  });
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      root.dataset.theme = root.dataset.theme === 'night' ? 'day' : 'night';
+      explicit = true;
+      try { localStorage.setItem('dinu-theme', root.dataset.theme); } catch (_) {}
+      syncTheme();
+    });
+  }
   matchMedia('(prefers-color-scheme: light)').addEventListener('change', event => {
     if (!explicit) { root.dataset.theme = event.matches ? 'day' : 'night'; syncTheme(); }
   });
@@ -31,11 +33,13 @@
   if (!menu || !links) return;
   root.classList.add('menu-ready');
   function closeMenu(restoreFocus = false) {
+
     menu.setAttribute('aria-expanded', 'false');
     links.classList.remove('is-open');
     if (restoreFocus) menu.focus();
   }
-  menu.addEventListener('click', () => {
+  menu.addEventListener('click', (event) => {
+    event.stopPropagation();
     const open = menu.getAttribute('aria-expanded') !== 'true';
     menu.setAttribute('aria-expanded', String(open));
     links.classList.toggle('is-open', open);
@@ -52,8 +56,10 @@
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') closeMenu(true);
   });
-  document.addEventListener('click', event => {
-    if (!event.target.closest('.site-nav')) closeMenu();
+  ['click', 'touchstart'].forEach(type => {
+    document.addEventListener(type, event => {
+      if (!event.target.closest('.site-nav')) closeMenu();
+    }, { passive: true });
   });
   document.addEventListener('focusin', event => {
     if (!event.target.closest('.site-nav')) closeMenu();

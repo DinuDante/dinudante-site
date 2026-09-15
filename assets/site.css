@@ -117,7 +117,7 @@ footer { padding: 40px 0; border-top: 1px solid var(--line); margin-top: 60px; }
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .menu-ready .menu-toggle { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); cursor: pointer; }
-  .menu-ready .nav-links.is-open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--surface); padding: 20px; border-bottom: 1px solid var(--line); box-shadow: 0 10px 20px var(--shadow); align-items: flex-start; }
+  .menu-ready .nav-links.is-open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--surface); padding: 20px; border-bottom: 1px solid var(--line); box-shadow: 0 10px 20px var(--shadow); align-items: flex-start; z-index: 100; }
 }
 @media (max-width: 600px) {
   .theme-label { display: none; }
