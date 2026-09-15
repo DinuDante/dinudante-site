@@ -9,10 +9,10 @@ Current owner of this document: whoever picks the work up next. Keep it accurate
 | Authoritative brief | `AGY_dinudante_in_Production_Prompt.md` (Downloads) |
 | Supporting audit | `DinuDante_Critical_Website_Audit_2026-09-15.md` (Downloads) |
 | Long-lived project facts | `PROJECT_CONTEXT.md` |
-| Inherited checkpoint | commit `a2dd77c` — the previous agent's uncommitted tree, committed verbatim before any new work |
-| Current release | commit `0822406`, deployed and verified live on 16 September 2026 |
-| Previous release | commit `68154bf` (15 September 2026); `34b35f8` added documentation only |
-| Superseded one-off scripts | removed from the tree in `68154bf`; recoverable from `a2dd77c` |
+| Inherited checkpoint | commit `0822406` (16 September 2026) — verified release |
+| Current release | commit `c4734fb` (tools/photos.js added) — pending push |
+| Previous release | commit `0822406`, deployed and verified live on 16 September 2026 |
+| Current state | **Technical scope complete. Blocked on owner content (Instagram exports, exact dates, education updates).** |
 
 ## Build and verify
 

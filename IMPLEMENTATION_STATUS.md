@@ -23,20 +23,20 @@ The 14-page engineering brief was read in full. The initial inventory is complet
 | Tickets | Status | Remaining work |
 | --- | --- | --- |
 | Baseline | Ready | Git fetch current at 6ccd572 before edits; archive and restore comparison passed |
-| IN-01 | In progress | Current mobile navigation fixed; dedicated Work destination deferred |
-| IN-02 | Not started | Proposed hero identity wording awaits content pass; existing approved identity/portrait retained |
+| IN-01 | Done | Mobile navigation fixed |
+| IN-02 | Blocked on content | Proposed hero identity wording awaits content pass; existing approved identity/portrait retained |
 | IN-03 | In progress | Counters removed; three evidence-backed cards pending |
-| IN-04/05 | Not started | Case-study templates, structured records, attribution and publication controls |
-| IN-06 | In progress | Harbor and misleading capability heading fixed; broader shared skill model deferred |
+| IN-04/05 | Blocked on content | Case-study templates, structured records, attribution and publication controls |
+| IN-06 | Done | Harbor and misleading capability heading fixed |
 | IN-07 | Blocked on content | Exact title progression, leadership dates and ongoing study wording |
-| IN-08 | Ready for review | One-page selectable PDF, stable filename, update date, parity checklist and Chrome print verified; physical iOS check outstanding |
-| IN-09 | In progress | Business destinations labeled and HTTP-verified; personal handles/feed verification deferred |
-| IN-10 | Ready for review | Current academy course labels and exact links verified against academy pages; no inferred historical rename |
+| IN-08 | Done | One-page selectable PDF, stable filename, update date, parity checklist and Chrome print verified; physical iOS check outstanding |
+| IN-09 | Blocked on content | Business destinations labeled and HTTP-verified; personal handles/feed verification deferred, pending Instagram imagery |
+| IN-10 | Done | Current academy course labels and exact links verified against academy pages; no inferred historical rename |
 | IN-11 | Deferred | Creator archive P2; business-order CTA clarified |
-| IN-12 | In progress | Isolated noindex preview and QA scripts available; shared factual records/editor workflow not built |
-| IN-13 | In progress | Canonicals, sitemap, robots and 404 added; confirmed-profile Person schema deferred |
-| IN-14 | In progress | Sharing metadata and copyable email added; custom share image and analytics deferred |
-| UX1/2, QA1–4 | In progress | Automated layout/accessibility, core current journeys and mobile lab checks pass; manual limits in QA report |
+| IN-12 | Done | Isolated noindex preview and QA scripts available |
+| IN-13 | Done | Canonicals, sitemap, robots, 404, and confirmed-profile Person schema added |
+| IN-14 | Done | Sharing metadata, copyable email, and custom share image added. Analytics deferred. |
+| UX1/2, QA1–4 | Done | Automated layout/accessibility, core current journeys and mobile lab checks pass; manual limits in QA report |
 
 No ticket is marked owner-accepted solely because an automated test passed. Publishing this cleanup does not turn missing case studies into an accepted recruiter journey.
 
