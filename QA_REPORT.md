@@ -232,10 +232,36 @@ rendered count.
 
 ## Deployment
 
-Publication of the site is authorised (carried over from the 7 September release
-and reaffirmed by the current brief's "honour existing deployment
-authorization"). See the deployment section of the final summary for the commit
-and the live verification result.
+Publication is authorised (carried over from the 7 September release and
+reaffirmed by the current brief's "honour existing deployment authorization").
+
+| | |
+| --- | --- |
+| Release commit | `68154bff1c56502dda6812ab582cfd0018bd2a45` |
+| Inherited checkpoint | `a2dd77c` — the previous session's uncommitted tree, committed verbatim first |
+| Branch | `main`, pushed `160ffa9..68154bf` |
+| Published | GitHub Pages, https://dinudante.in |
+
+**Live verification, performed after the deployment, against the deployed site —
+not the local build:**
+
+- All 4 public routes plus `/404.html` return 200 with `text/html`.
+- All 12 published assets return 200 with the right content type, including
+  `site.v5.js` as `application/javascript` and the résumé as `application/pdf`.
+- **All 14 published files are byte-identical to the local build** (SHA-256).
+- Files that should no longer be served are gone: `/assets/logo.png` (the 1.79 MB
+  master, now under `masters/` and excluded by `_config.yml`),
+  `/assets/logo-social.png` and `/assets/site.css` all return 404, as does an
+  unknown route — each rendering the real error page.
+- 13 behavioural checks re-run against the live origin all pass: shared script
+  initialises, the pre-paint `js` class is applied, the theme toggle changes and
+  persists, the header stays stuck after scrolling, the mobile menu opens with
+  6 links and closes on Escape with focus restored, the catalogue shows 93 items
+  with working category filters and a working featured reveal, the PDF is served
+  as `application/pdf`, and the 404 route loads every one of its own assets.
+- The **live** PDF was downloaded and inspected independently: 1 A4 page,
+  4 hyperlinks, 2,666 characters of selectable text, rendered to
+  `screenshots/pdf-live/page-1.png` and looked at.
 
 ## Blocked and untested
 

@@ -59,7 +59,7 @@ Last updated: 2026-09-07 (Asia/Kolkata)
 - Repository: `git@github.com:DinuDante/dinudante-site.git`
 - Branch: `main`
 - Hosting: GitHub Pages at https://dinudante.in
-- Latest deployed site commit at context save: `32de10d` (`Scale site for high-resolution displays`).
+- Latest deployed site commit at context save: `68154bf` (15 September 2026 production release). Verified live: all routes and assets 200 with correct content types, every published file byte-identical to the local build, and 13 live behavioural checks passing against https://dinudante.in.
 - The preceding PDF/cache releases are `b1ff038` (`Refresh responsive layouts and ATS resume`) and `7e3d498` (`Bust cached resume downloads`).
 - GitHub Pages deployment for `32de10d` completed successfully. The live high-resolution HTML and SVG favicon were verified, and the live downloadable PDF matched the local asset byte-for-byte with SHA-256 `dafa616a83e62131d458e5e47bc5f4bef9ad667058cd3653d3bffeb10a77d0d8`.
 
