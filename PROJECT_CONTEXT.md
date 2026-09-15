@@ -1,6 +1,6 @@
 # DinuDante.in project context
 
-Last updated: 2026-09-07 (Asia/Kolkata)
+Last updated: 2026-09-16 (Asia/Kolkata)
 
 ## Identity and positioning
 
@@ -38,10 +38,10 @@ Last updated: 2026-09-07 (Asia/Kolkata)
 - The website résumé is the canonical résumé; do not reuse the original source PDF design.
 - Downloadable file: `assets/Dinesh_Behera_Resume.pdf`.
 - It must remain one A4 page, selectable-text and ATS-friendly.
-- The downloadable PDF is a standalone ATS résumé derived from the available Master CV and ATS source résumé; it is intentionally separate from the styled website résumé and must not be regenerated from `resume.html`.
-- Current verified PDF properties: one A4 page, selectable text, embedded Arial fonts, no images, three contact links, and populated title/author/subject/keyword metadata. September cleanup moved Harbor into the automation/delivery group, used DevOps subject wording and added the content updated date.
-- The download link uses the cache-busting query `?v=20260907` while retaining the filename `Dinesh_Behera_Resume.pdf`.
-- The iOS Safari print path requires the final WebKit print rule in `resume.html`: a fixed 281 mm canvas with the complete résumé scaled to 96%. Do not remove it or replace it with `zoom`; iOS Safari ignored `zoom` and produced two pages.
+- **Superseded on 15 September 2026.** The PDF used to be a standalone ATS file that was never to be regenerated from `resume.html`. The production brief required repairing the print pipeline and regenerating the artifact from the final approved content, so `generate_pdf.js` now produces it *from* `resume.html` and refuses to write a file if any stylesheet, web font or image failed to load, or if no `@media print` block reached the page. Content parity is therefore structural rather than hand-maintained.
+- Current verified PDF properties (measured on the live file, 16 September 2026): one A4 page at 595 × 841.9 pt, 207,037 bytes, selectable text of 2,666 characters, serif/sans-serif/monospace faces, a 300 × 400 portrait in a 24 × 31 mm box, **four** hyperlinks (email, dinudante.in, ProLEAP Academy, DDPrinterZ), and populated Title/Author/Subject/keyword metadata. Harbor sits in the delivery & registries group.
+- The download link uses the cache-busting query `?v=20260915` while retaining the filename `Dinesh_Behera_Resume.pdf`.
+- The iOS Safari print workaround (a fixed 281 mm canvas at 96% scale) is **gone**, removed with the print-stylesheet rewrite in the 15 September release. It is no longer needed for the download, which the build produces rather than the visitor's browser. The consequence is that the in-browser "Print this page" path on iOS Safari is **untested** — it needs a physical device.
 - Current skills intentionally exclude HPE 3PAR/CSI, storage/data-protection categories, MySQL/DBA, Dynatrace and Data automation.
 - Use `Basic networking`, not `Networking` alone.
 
@@ -73,7 +73,7 @@ Last updated: 2026-09-07 (Asia/Kolkata)
 ## September cleanup release
 
 - User authorized end-to-end cleanup and live publication on 7 September 2026. See QA_REPORT.md and IMPLEMENTATION_STATUS.md for scope, evidence and deferred content.
-- Static HTML remains the platform. Styles are now assets/home.css, assets/resume.css and assets/site.css. Shared robust theme/menu code is assets/theme-init.js and assets/site.js. Keep the original résumé print canvas rule in assets/resume.css.
+- Static HTML remains the platform. As of the 15 September release the stylesheets are `assets/site.v4.css` (shared tokens and components), `assets/home.css`, `assets/resume.css` and `assets/setup.css`; the scripts are `assets/theme-init.js` (render-blocking, sets `js` and the theme before first paint), `assets/site.v5.js` (shared shell) and `assets/setup.js` (catalogue). `assets/site.css` and `assets/site.js` no longer exist. The résumé print canvas rule was removed with the print rewrite.
 - Mobile menu, skip links, touch controls, storage failure handling, light-theme contrast, business social labels and copyable email are implemented. Decorative counters are removed.
 - Home canonical is `/`; retain `/index.html` alias and `/resume.html`. New privacy page, 404, sitemap and robots are included. No analytics script enabled.
 - GitHub Pages uses its dynamic pages build and deployment workflow. Last successful pre-cleanup revision was 6ccd572. The cleanup release is identified by the commit introducing QA_REPORT.md; verify Pages success against that SHA before declaring deployment done.
