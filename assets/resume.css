@@ -1,132 +1,111 @@
 
-/* RESUME SPECIFIC STYLES */
 .resume-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 240px;
-  gap: 40px;
-  align-items: center;
-  padding-block: 64px 40px;
+  padding-block: 60px 40px;
   border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
-@media (max-width: 768px) {
-  .resume-hero {
-    grid-template-columns: 1fr;
-    text-align: left;
-    padding-block: 40px 32px;
-  }
-}
-.resume-hero h1 { margin: 8px 0 12px; }
-.resume-hero h1 small { font-size: 0.4em; color: var(--muted); }
-.portrait img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 12px 24px var(--shadow);
-}
-.headline { font-size: var(--text-lg); color: var(--text-secondary); margin-bottom: 12px; font-weight: 500; }
+.resume-hero h1 { margin: 8px 0 12px; font-size: clamp(2rem, 4vw, 3rem); }
+.resume-hero h1 small { font-size: 0.5em; color: var(--muted); }
+.headline { font-size: var(--text-lg); color: var(--text-secondary); font-weight: 500; margin-bottom: 16px; }
 .summary { font-size: var(--text-base); color: var(--text-secondary); max-width: 800px; }
+
+.portrait-modest {
+  width: 160px;
+  height: 213px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 8px 16px var(--shadow);
+}
+@media (min-width: 768px) {
+  .resume-hero { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+  .portrait-modest { width: 180px; height: 240px; }
+}
 
 .contact-strip {
   display: flex;
   flex-wrap: wrap;
   gap: 16px 24px;
-  padding: 16px 0;
+  padding: 20px 0;
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   color: var(--muted);
   border-bottom: 1px solid var(--line);
+  margin-bottom: 40px;
 }
 .contact-strip a { display: inline-flex; align-items: center; gap: 6px; }
+.pdf-download { color: var(--text); font-weight: bold; }
 
-.resume-primary {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.36fr) minmax(0, 0.64fr);
-  gap: clamp(40px, 6vw, 72px);
-  align-items: start;
-  padding-block: 64px;
-}
-@media (max-width: 900px) {
-  .resume-primary {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
+.resume-container {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-.sidebar .block, .content .block { margin-bottom: 48px; }
-.sidebar .block:last-child, .content .block:last-child { margin-bottom: 0; }
+.block { margin-bottom: 48px; }
+.block h2 { margin-bottom: 24px; font-size: clamp(1.5rem, 3vw, 2rem); }
 
-.block h2 { margin-top: 8px; margin-bottom: 24px; }
-
-.skill-set { margin-bottom: 24px; }
-.skill-set h3 { font-family: var(--font-body); font-size: var(--text-sm); color: var(--text); margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { padding: 7px 11px; font-size: 13px; font-family: var(--font-body); border: 1px solid var(--line); border-radius: 99px; color: var(--text-secondary); background: var(--surface); }
-
-.plain-list { list-style: none; padding: 0; margin: 0; }
-.plain-list li { padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px dashed var(--line); font-size: var(--text-sm); color: var(--text-secondary); }
-.plain-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.plain-list strong { display: block; color: var(--text); font-size: var(--text-base); margin-bottom: 4px; font-weight: 500; }
-
-.experience-item, .role {
-  display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
-  gap: 28px;
-  margin-bottom: 40px;
-  padding-bottom: 40px;
+.role {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
   border-bottom: 1px solid var(--line);
 }
 .role:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-@media (max-width: 768px) {
-  .experience-item, .role {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
+.role-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.role h3 { margin: 0 0 4px; font-size: 1.4rem; font-family: var(--font-body); font-weight: 600; }
+.role .company { font-size: 1rem; color: var(--accent); margin: 0; font-weight: 500; }
+.role .date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+@media (min-width: 768px) {
+  .role-header { flex-direction: row; justify-content: space-between; align-items: baseline; }
+  .role .date { margin-bottom: 0; }
 }
 
-.role .date { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--muted); padding-top: 4px; }
-.role h3 { font-size: 22px; margin: 0 0 4px; font-family: var(--font-body); font-weight: 600; }
-.role .company { font-size: var(--text-sm); color: var(--accent); margin: 0 0 16px; font-weight: 500; }
-.project-list, .role ul { 
-  margin: 0; padding-left: 20px; 
-  color: var(--text-secondary); 
-  font-size: 15px; 
-  line-height: 1.6; 
-}
-.project-list li, .role ul li { margin-bottom: 8px; }
+.role ul { padding-left: 20px; color: var(--text-secondary); margin: 0; font-size: 0.95rem; line-height: 1.6; }
+.role ul li { margin-bottom: 8px; }
 
-/* Full width blocks */
-.full-width-block {
-  padding-bottom: 64px;
-}
-
-.category-grid {
+/* Grid for skills/capabilities */
+.skill-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
 }
-@media (max-width: 900px) { .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .category-grid { grid-template-columns: 1fr; } }
-
-.category {
+.skill-category {
   padding: 20px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
 }
-.category strong { display: block; font-size: 18px; margin-bottom: 8px; color: var(--text); }
-.category span { font-size: 14px; color: var(--text-secondary); line-height: 1.5; display: block; }
+.skill-category h3 { font-size: 1.1rem; margin: 0 0 12px; color: var(--text); font-family: var(--font-body); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { padding: 4px 10px; font-size: 0.8rem; border: 1px solid var(--line); border-radius: 99px; color: var(--text-secondary); background: var(--bg); }
+
+/* Education list */
+.plain-list { list-style: none; padding: 0; margin: 0; }
+.plain-list li { margin-bottom: 16px; font-size: 0.95rem; color: var(--text-secondary); }
+.plain-list strong { display: block; color: var(--text); font-size: 1.05rem; }
 
 @media print {
-  @page { size: A4; margin: 12mm; }
+  @page { size: A4; margin: 15mm; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { background: #fff !important; color: #111 !important; }
-  nav, footer, .theme-control { display: none !important; }
+  body { background: #fff !important; color: #111 !important; font-size: 11pt; }
+  nav, footer, .theme-control, .contact-strip .pdf-download { display: none !important; }
   .shell { width: 100% !important; max-width: none !important; margin: 0 !important; }
-  .resume-hero, .resume-primary, .full-width-block { padding-block: 16px !important; }
-  .resume-primary { grid-template-columns: 200px 1fr; gap: 32px; }
-  .role { grid-template-columns: 120px 1fr; gap: 16px; margin-bottom: 24px; padding-bottom: 24px; }
-  .category-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .tag { background: #f5f5f5 !important; border-color: #ddd !important; color: #333 !important; }
-  h1, h2, h3, .date, .company { color: #000 !important; }
-  .text-secondary, .text-muted, .project-list, .role ul { color: #333 !important; }
-  .category { background: #fafafa !important; border-color: #eee !important; }
+  .resume-hero { border-bottom: 2px solid #333; padding-block: 0 16px; margin-bottom: 16px; flex-direction: row; align-items: center; }
+  .resume-hero h1 { font-size: 24pt; margin: 0 0 8px; color: #000 !important; }
+  .portrait-modest { width: 80px; height: 107px; box-shadow: none; border-radius: 4px; }
+  .headline { font-size: 12pt; color: #333 !important; }
+  .summary { font-size: 10.5pt; color: #444 !important; }
+  .contact-strip { padding: 8px 0; margin-bottom: 16px; border-bottom: 1px solid #ddd; }
+  .contact-strip a { color: #333 !important; }
+  .block h2 { font-size: 14pt; border-bottom: 1px solid #ddd; padding-bottom: 4px; margin-bottom: 12px; }
+  .role { border-bottom: none; margin-bottom: 16px; padding-bottom: 0; }
+  .role h3 { font-size: 12pt; color: #000 !important; }
+  .role .company { font-size: 11pt; color: #222 !important; }
+  .skill-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .skill-category { padding: 12px; border: 1px solid #ccc; }
+  .tag { border-color: #ccc; background: transparent; color: #222 !important; }
 }
