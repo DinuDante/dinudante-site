@@ -42,17 +42,30 @@
     const closeMenu = (restoreFocus = false) => {
       menu.setAttribute('aria-expanded', 'false');
       links.classList.remove('is-open');
+      links.style.display = '';
       if (restoreFocus) menu.focus();
     };
 
     menu.onclick = (e) => {
       e.preventDefault();
-      const isOpen = links.classList.contains('is-open');
+      e.stopPropagation();
+      const isOpen = menu.getAttribute('aria-expanded') === 'true';
       if (isOpen) {
         closeMenu();
       } else {
         menu.setAttribute('aria-expanded', 'true');
         links.classList.add('is-open');
+        links.style.display = 'flex';
+        links.style.flexDirection = 'column';
+        links.style.position = 'absolute';
+        links.style.top = '100%';
+        links.style.left = '0';
+        links.style.right = '0';
+        links.style.background = 'var(--surface)';
+        links.style.padding = '20px';
+        links.style.boxShadow = '0 10px 20px rgba(0,0,0,0.5)';
+        links.style.alignItems = 'flex-start';
+        links.style.zIndex = '99999';
       }
     };
 
