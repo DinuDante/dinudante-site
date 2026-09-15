@@ -23,7 +23,7 @@
     "asin": "B08NYSP2FX",
     "title": "DailyObjects Wrap-Lock Strip Cable Bind | Silicone Multipurpose Organiser Binder for Bundling Cable and Earphones to Organise Home, Desks, Offices, Cars, Cubicles While Work Or Travel | Set of 7",
     "image": "https://m.media-amazon.com/images/I/51v56T1TCAL._SX425_.jpg",
-    "primaryCategory": "AUDIO",
+    "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
     "featured": false,
@@ -87,7 +87,7 @@
     "asin": "B0FLHKFSGF",
     "title": "Kreo Arctik Pro Laptop Cooler Pad Dual 125mm Fans, 3000 RPM, 7-Way Adjustable Cooling Pad with RGB Lighting, USB-C Powered, Built-in USB Hub (Arctik Pro)",
     "image": "https://m.media-amazon.com/images/I/61srMs0SGLL._SY355_.jpg",
-    "primaryCategory": "EVERYDAY & UTILITY",
+    "primaryCategory": "WORKSPACE",
     "tags": [],
     "personallyTested": true,
     "featured": false,
@@ -1003,7 +1003,7 @@
     "asin": "B09X7CFXSX",
     "title": "SanDisk Extreme Pro SD UHS I Card",
     "image": "https://m.media-amazon.com/images/I/81XikLcGGoL._SL1500_.jpg",
-    "primaryCategory": "COMPUTING & MOBILE",
+    "primaryCategory": "STORAGE & CONNECTIVITY",
     "tags": [],
     "personallyTested": true,
     "featured": false,
@@ -1355,7 +1355,7 @@
     "asin": "B084X7Y51M",
     "title": "Sennheiser CX 80s Wired in Ear Earphones",
     "image": "https://m.media-amazon.com/images/I/61aPGUwffDS._SL1500_.jpg",
-    "primaryCategory": "INPUT & CONTROL",
+    "primaryCategory": "AUDIO",
     "tags": [],
     "personallyTested": true,
     "featured": false,
@@ -1458,5 +1458,21 @@
     "url": "https://link.amazon/B01W6F39i",
     "category": "WORKSPACE",
     "exactListingTitle": "Coway Airmega 150 Air Purifier For Home"
+  },
+  {
+    "title": "ARZOPA 16.1''144Hz Portable Monitor, 106% sRGB FHD 1080P Kickstand Portable Gaming Monitor with Speaker HDR, Ultra Slim, Eye Care Screen for Laptop, PC, Mobile,PS5, MacBook- USB C & HDMI Connectivity",
+    "url": "https://link.amazon/B02oIJdYW",
+    "image": "https://m.media-amazon.com/images/I/51dXBO0yW0L._SY300_SX300_QL70_FMwebp_.jpg",
+    "asin": "B0CRKGKZVX",
+    "primaryCategory": "DISPLAYS",
+    "featured": true
+  },
+  {
+    "title": "Ambrane 100W Fast Charging Powerbank for MacBook, Type C Laptop & Mobile Charging, USB-A Output 25,000mAh Battery, Triple Output, Power Delivery & Quick Charge (Powerlit Ultra, Black)",
+    "url": "https://link.amazon/B057fmWSL",
+    "image": "https://m.media-amazon.com/images/I/71fmgrzbpML._SX425_.jpg",
+    "asin": "B0BYVDM93V",
+    "primaryCategory": "POWER & CHARGING",
+    "featured": true
   }
 ]

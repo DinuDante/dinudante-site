@@ -2,23 +2,8 @@ const fs = require('fs');
 
 const master = JSON.parse(fs.readFileSync('master_dataset.json', 'utf8'));
 
-// Re-map categories
-master.forEach(p => {
-  const t = p.title.toLowerCase();
-  if (t.includes('tp-link eh210')) p.primaryCategory = 'STORAGE & CONNECTIVITY';
-  if (t.includes('green soul') && t.includes('chair')) p.primaryCategory = 'WORKSPACE';
-  if (t.includes('kz edx pro')) p.primaryCategory = 'AUDIO';
-  if (t.includes('benq gw2790q')) p.primaryCategory = 'DISPLAYS';
-  if (t.includes('lg ultrawide')) p.primaryCategory = 'DISPLAYS';
-  if (t.includes('xiaomi pad 7')) p.primaryCategory = 'COMPUTING & MOBILE';
-  if (t.includes('sony mdr-zx310ap')) p.primaryCategory = 'AUDIO';
-  if (t.includes('quntis monitor light')) p.primaryCategory = 'WORKSPACE';
-  if (t.includes('green soul') && t.includes('table')) p.primaryCategory = 'WORKSPACE';
-  if (t.includes('usb4') || t.includes('thunderbolt')) p.primaryCategory = 'STORAGE & CONNECTIVITY';
-  // Fallbacks if not categorized
-  if (!p.primaryCategory) p.primaryCategory = 'EVERYDAY & UTILITY';
-});
-fs.writeFileSync('master_dataset.json', JSON.stringify(master, null, 2));
+
+
 
 const categories = [
   "COMPUTING & MOBILE", "DISPLAYS", "INPUT & CONTROL", "AUDIO", 
@@ -159,6 +144,26 @@ if (styleStart > -1 && styleEnd > -1) {
       .gear-card:hover .gear-link { color: var(--text); }
   </style>` + html.substring(styleEnd + 8);
 }
+
+// Add schema.org JSON-LD
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "numberOfItems": master.length,
+  "itemListElement": master.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Product",
+      "name": item.title,
+      "url": item.url,
+      "image": item.image
+    }
+  }))
+};
+const schemaHtml = '<script type="application/ld+json">\\n' + JSON.stringify(schema, null, 2) + '\\n</script>\\n</head>';
+html = html.replace(/<script type="application\/ld\+json">.*?<\/script>\s*<\/head>/s, '</head>');
+html = html.replace('</head>', schemaHtml);
 
 fs.writeFileSync('setup.html', html);
 console.log('Build setup done.');
