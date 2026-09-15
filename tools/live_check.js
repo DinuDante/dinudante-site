@@ -42,7 +42,11 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
  ck('live setup: category filter works with aria-pressed',(await vis())===6&&await p.$eval('.filter-btn[data-filter="displays"]',e=>e.getAttribute('aria-pressed'))==='true',`${await vis()} visible`);
  await p.click('.filter-btn[data-filter="all"]');await sleep(150);
  await p.type('#gear-search','ARZOPA');await sleep(300);
- await p.click('a[href="#item-B07DKZCZ89"]');await sleep(2000);
+ // Filtering shortens the page, so the link's bounding-box centre can land under the
+ // sticky header. Scroll it clear and click its first line box instead.
+ await p.evaluate(()=>document.querySelector('a[href="#item-B07DKZCZ89"]').scrollIntoView({block:'center'}));await sleep(300);
+ const bx=await p.evaluate(()=>{const r=document.querySelector('a[href="#item-B07DKZCZ89"]').getClientRects()[0];return {x:r.left+Math.min(r.width/2,40),y:r.top+r.height/2};});
+ await p.mouse.click(bx.x,bx.y);await sleep(2000);
  ck('live setup: featured link reveals a filtered-out target',await p.evaluate(()=>{const t=document.getElementById('item-B07DKZCZ89');return !t.hidden&&document.activeElement===t}));
  await p.close();
 

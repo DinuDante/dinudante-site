@@ -10,7 +10,7 @@ Current owner of this document: whoever picks the work up next. Keep it accurate
 | Supporting audit | `DinuDante_Critical_Website_Audit_2026-09-15.md` (Downloads) |
 | Long-lived project facts | `PROJECT_CONTEXT.md` |
 | Inherited checkpoint | commit `a2dd77c` — the previous agent's uncommitted tree, committed verbatim before any new work |
-| Current release | commit `RELEASE_SHA`, deployed and verified live on 16 September 2026 |
+| Current release | commit `0822406`, deployed and verified live on 16 September 2026 |
 | Previous release | commit `68154bf` (15 September 2026); `34b35f8` added documentation only |
 | Superseded one-off scripts | removed from the tree in `68154bf`; recoverable from `a2dd77c` |
 

@@ -473,3 +473,67 @@ The authentic portraits are unchanged. Neither portrait uses `srcset`: at 36 KB
 and 84 KB, a 720 w source already covers a 2× phone and a 2× desktop rendering,
 and Lighthouse reports no image-sizing opportunity on any route. That is a
 deliberate decision, not an omission.
+
+
+## Deployment and live verification — 16 September 2026
+
+Published under the deployment authorisation carried over from the 7 September
+release and reaffirmed by the brief.
+
+| | |
+| --- | --- |
+| Release commit | `08224067fba38d36cd79711e2ce2d440fea6686a` |
+| Branch | `main`, pushed `34b35f8..0822406` |
+| Published | GitHub Pages, https://dinudante.in |
+| Build mode | Jekyll, enabled for the first time by removing `.nojekyll` |
+
+All of the following was measured **against the deployed origin**, after the
+Pages build completed — not against the local build.
+
+**Routes and assets** — 27 URLs checked, all **200** with the expected content
+type: the five routes, `sitemap.xml`, `robots.txt`, `CNAME`, both favicons, the
+PDF as `application/pdf`, the three scripts as `application/javascript`, the four
+stylesheets as `text/css`, both portraits as `image/webp`, and the five PNG icons.
+
+**Files that should no longer be served** — 27 URLs checked, all **404**: every
+build and QA script, `master_dataset.json`, `package.json`, `package-lock.json`,
+all six internal Markdown documents, `_config.yml`, `scripts/`, `tools/`, and
+`masters/logo.png` (1,833,082 bytes). Before this release every one of them
+returned 200.
+
+**Byte parity** — all **24 published files are byte-identical to their committed
+blobs** (SHA-256). Comparing against the Windows *working copy* instead shows two
+files differing; that is Git's CRLF checkout conversion, not a deployment
+difference, and the blob comparison is the correct one.
+
+**Behaviour on the live origin** — `node tools/live_check.js`, **13 / 13**: no
+failing first-party request or script error; the shared script initialises and
+the pre-paint `js` class is applied; the theme toggle changes, relabels and
+persists; the header stays stuck; the mobile menu opens with 6 links and closes
+on Escape with focus restored; the catalogue shows 93 products with a working
+category filter exposing `aria-pressed`; a featured link reveals and focuses a
+filtered-out target; the PDF is served as `application/pdf`; the 404 route
+returns 404 and loads all of its own assets.
+
+**The grid fix on the deployed site** — measured live, not inferred:
+
+| Width | Columns | Media box heights | Rows with misaligned titles | Page height |
+| ---: | ---: | --- | ---: | ---: |
+| 390 | 2 | all 131 px | 0 | 19,375 px |
+| 768 | 3 | all 171 px | 0 | 15,313 px |
+| 1280 | 5 | all 164 px | 0 | 9,748 px |
+
+**The live résumé PDF** — downloaded from
+`https://dinudante.in/assets/Dinesh_Behera_Resume.pdf`, 207,037 bytes, SHA-256
+matching the committed blob. Inspected independently: **1 A4 page** (595 × 841.9 pt),
+**4 working hyperlinks** (email, dinudante.in, ProLEAP Academy, DDPrinterZ),
+**2,666 characters of selectable text**, populated Title / Author / Subject
+metadata. Rendered to `screenshots/pdf-live/page-1.png` and looked at: the header,
+portrait, contact row, three dated roles, four capability groups, delivery notes
+and education all fit one page with no clipping, no collision between dates and
+titles, and no orphaned content.
+
+**One fix was needed in the live harness itself.** `tools/live_check.js` had the
+same bounding-box-centre click fragility as `qa_interactions.js` and crashed on
+the featured-link step; it now scrolls the link clear and clicks its first line
+box. The site behaviour was correct throughout.

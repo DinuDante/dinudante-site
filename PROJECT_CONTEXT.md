@@ -59,7 +59,9 @@ Last updated: 2026-09-07 (Asia/Kolkata)
 - Repository: `git@github.com:DinuDante/dinudante-site.git`
 - Branch: `main`
 - Hosting: GitHub Pages at https://dinudante.in
-- Latest deployed site commit at context save: `68154bf` (15 September 2026 production release). Verified live: all routes and assets 200 with correct content types, every published file byte-identical to the local build, and 13 live behavioural checks passing against https://dinudante.in.
+- Latest deployed site commit at context save: `0822406` (16 September 2026). Verified live: 27 routes and assets 200 with correct content types, 24 published files byte-identical to their committed blobs, 27 engineering files and `masters/logo.png` now correctly 404, and 13 live behavioural checks passing against https://dinudante.in.
+- The preceding release is `68154bf` (15 September 2026), with `34b35f8` adding documentation only.
+- **Do not add a `.nojekyll` file.** It disables Jekyll, which silently voids the `exclude` list in `_config.yml`; that is how every build script, `master_dataset.json`, the QA reports and the 1.79 MB `masters/logo.png` became publicly downloadable. No page uses front matter or Liquid, so Jekyll copies all five routes verbatim.
 - The preceding PDF/cache releases are `b1ff038` (`Refresh responsive layouts and ATS resume`) and `7e3d498` (`Bust cached resume downloads`).
 - GitHub Pages deployment for `32de10d` completed successfully. The live high-resolution HTML and SVG favicon were verified, and the live downloadable PDF matched the local asset byte-for-byte with SHA-256 `dafa616a83e62131d458e5e47bc5f4bef9ad667058cd3653d3bffeb10a77d0d8`.
 
