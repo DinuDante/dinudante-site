@@ -15,7 +15,7 @@
   <style>
       /* ENGINEERING WORKSTATION THEME */
       .setup-hero { padding: 90px 0 40px; }
-      .setup-hero h1 { margin: 10px 0 20px 0; font-weight: 500; font-family: ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.02em; font-size: clamp(3rem, 6vw, 4.5rem); }
+      .setup-hero h1 { margin: 10px 0 20px 0; font-weight: 500; font-family: var(--font-body); letter-spacing: -0.02em; font-size: clamp(3rem, 6vw, 4.5rem); }
       
       .catalogue-container {
         width: min(1320px, calc(100% - 40px));
@@ -124,7 +124,7 @@
         color: var(--green);
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        font-family: var(--font-mono);
       }
       
       .gear-card__title {
@@ -133,7 +133,7 @@
         font-weight: 600;
         margin: 0;
         color: var(--text);
-        font-family: ui-sans-serif, system-ui, sans-serif;
+        font-family: var(--font-body);
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
@@ -171,7 +171,7 @@
       .gear-link {
         font-size: 0.75rem;
         color: var(--muted);
-        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        font-family: var(--font-mono);
         transition: color 0.15s;
       }
       .gear-card:hover .gear-link { color: var(--text); }
@@ -266,9 +266,9 @@
   <main id="main-content" tabindex="-1">
 
     <section class="shell setup-hero" style="padding-bottom: 0;">
-      <span style="font-family: ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--green); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">MY SETUP</span>
+      <span style="font-family: var(--font-mono); color: var(--green); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">MY SETUP</span>
       <h1>Hardware and tools behind my cloud engineering, coding, teaching, maker projects and content workflow.</h1>
-      <div style="font-family: ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px;">
+      <div style="font-family: var(--font-mono); color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px;">
         <strong>91 PRODUCTS</strong> &nbsp;&middot;&nbsp; PERSONALLY PURCHASED &middot; USED &middot; TESTED
       </div>
     </section>
@@ -287,7 +287,7 @@
       <div style="margin-top: 64px;">
         <div style="display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 16px;">
           <h2 id="catalogue-title" style="font-size: 1.25rem; font-weight: 500; margin: 0;">ALL GEAR</h2>
-          <span id="catalogue-count" style="font-family: ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); font-size: 0.85rem;">91 items</span>
+          <span id="catalogue-count" style="font-family: var(--font-mono); color: var(--muted); font-size: 0.85rem;">91 items</span>
         </div>
         
         <div class="search-wrap">
