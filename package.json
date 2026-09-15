@@ -24,5 +24,11 @@
   },
   "allowScripts": {
     "puppeteer@25.11.0": true
+  },
+  "devDependencies": {
+    "axe-core": "^4.13.0",
+    "lighthouse": "^13.4.1",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.10.38"
   }
 }

@@ -1,111 +1,156 @@
+/* ==========================================================================
+   Résumé page — screen layout plus the print rules that produce the
+   downloadable PDF (see generate_pdf.js). Shared tokens, header, controls
+   and footer come from site.v4.css.
+   ========================================================================== */
+
+.resume-container { max-width: 980px; padding-block: clamp(32px, 5vw, 56px) 0; }
 
 .resume-hero {
-  padding-block: 60px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: clamp(20px, 4vw, 40px);
+  padding-bottom: clamp(24px, 3vw, 32px);
   border-bottom: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 }
-.resume-hero h1 { margin: 8px 0 12px; font-size: clamp(2rem, 4vw, 3rem); }
-.resume-hero h1 small { font-size: 0.5em; color: var(--muted); }
-.headline { font-size: var(--text-lg); color: var(--text-secondary); font-weight: 500; margin-bottom: 16px; }
-.summary { font-size: var(--text-base); color: var(--text-secondary); max-width: 800px; }
+.resume-hero h1 { margin: 10px 0 12px; font-size: clamp(2.1rem, 4.4vw, 3.1rem); }
+.resume-hero h1 .alias { display: block; margin-top: 6px; font-size: 0.36em; letter-spacing: 0.06em; color: var(--muted); }
+.headline { margin: 0 0 14px; font-size: var(--text-lg); font-weight: 600; color: var(--text-secondary); }
+.summary { max-width: 72ch; margin: 0; color: var(--text-secondary); }
 
 .portrait-modest {
-  width: 160px;
-  height: 213px;
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0 8px 16px var(--shadow);
-}
-@media (min-width: 768px) {
-  .resume-hero { flex-direction: row; justify-content: space-between; align-items: flex-start; }
-  .portrait-modest { width: 180px; height: 240px; }
+  width: 150px; height: 200px;
+  object-fit: cover; object-position: center 18%;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 24px var(--shadow);
 }
 
 .contact-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 24px;
-  padding: 20px 0;
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  color: var(--muted);
+  display: flex; flex-wrap: wrap; gap: 4px 24px;
+  margin: 0; padding: 18px 0 0; list-style: none;
+  font-family: var(--font-mono); font-size: var(--text-sm); color: var(--muted);
+}
+.contact-strip li { display: flex; align-items: center; min-height: var(--control-height); }
+.contact-strip a { display: inline-flex; align-items: center; min-height: var(--control-height); color: var(--text-secondary); text-decoration: underline; text-underline-offset: 3px; }
+.contact-strip a:hover { color: var(--accent); }
+
+.resume-actions {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  padding-block: 20px 28px;
   border-bottom: 1px solid var(--line);
-  margin-bottom: 40px;
-}
-.contact-strip a { display: inline-flex; align-items: center; gap: 6px; }
-.pdf-download { color: var(--text); font-weight: bold; }
-
-.resume-container {
-  max-width: 960px;
-  margin: 0 auto;
+  margin-bottom: clamp(28px, 4vw, 44px);
 }
 
-.block { margin-bottom: 48px; }
-.block h2 { margin-bottom: 24px; font-size: clamp(1.5rem, 3vw, 2rem); }
-
-.role {
-  margin-bottom: 32px;
-  padding-bottom: 32px;
+.block { margin-bottom: clamp(32px, 4vw, 48px); }
+.block > h2 {
+  margin: 0 0 20px; padding-bottom: 8px;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
   border-bottom: 1px solid var(--line);
 }
-.role:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.role-header {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 12px;
-}
-.role h3 { margin: 0 0 4px; font-size: 1.4rem; font-family: var(--font-body); font-weight: 600; }
-.role .company { font-size: 1rem; color: var(--accent); margin: 0; font-weight: 500; }
-.role .date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
-@media (min-width: 768px) {
-  .role-header { flex-direction: row; justify-content: space-between; align-items: baseline; }
-  .role .date { margin-bottom: 0; }
+
+.role { margin-bottom: 28px; }
+.role:last-child { margin-bottom: 0; }
+.role-header { display: flex; flex-direction: column; gap: 2px; margin-bottom: 10px; }
+.role h3 { margin: 0; font-family: var(--font-body); font-size: 1.12rem; font-weight: 600; line-height: 1.35; }
+.role .company { margin: 2px 0 0; font-size: 0.95rem; font-weight: 500; color: var(--accent); }
+.role .date { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
+@media (min-width: 720px) {
+  /* Dates sit in their own column so they can never collide with a long title. */
+  .role-header { flex-direction: row; justify-content: space-between; align-items: baseline; gap: 24px; }
+  .role .date { flex: 0 0 auto; }
 }
 
-.role ul { padding-left: 20px; color: var(--text-secondary); margin: 0; font-size: 0.95rem; line-height: 1.6; }
-.role ul li { margin-bottom: 8px; }
+.role ul, .bullets { margin: 0; padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; }
+.role ul li, .bullets li { margin-bottom: 6px; }
 
-/* Grid for skills/capabilities */
-.skill-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-.skill-category {
-  padding: 20px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
-}
-.skill-category h3 { font-size: 1.1rem; margin: 0 0 12px; color: var(--text); font-family: var(--font-body); }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { padding: 4px 10px; font-size: 0.8rem; border: 1px solid var(--line); border-radius: 99px; color: var(--text-secondary); background: var(--bg); }
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.skill-category { padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.skill-category h3 { margin: 0 0 12px; font-family: var(--font-body); font-size: 1rem; font-weight: 600; }
+/* Each skill is its own list item, so assistive technology and extracted PDF
+   text keep them separated instead of running the labels together. */
+.skill-category .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.skill-category .tag { padding: 4px 10px; border: 1px solid var(--line); border-radius: var(--radius-pill); background: var(--bg); color: var(--text-secondary); font-size: 0.78rem; }
 
-/* Education list */
-.plain-list { list-style: none; padding: 0; margin: 0; }
-.plain-list li { margin-bottom: 16px; font-size: 0.95rem; color: var(--text-secondary); }
-.plain-list strong { display: block; color: var(--text); font-size: 1.05rem; }
+.plain-list { margin: 0; padding: 0; list-style: none; }
+.plain-list li { margin-bottom: 14px; color: var(--text-secondary); font-size: 0.95rem; }
+.plain-list strong { display: block; color: var(--text); font-size: 1.03rem; font-weight: 600; }
+
+@media (max-width: 640px) {
+  .resume-hero { grid-template-columns: 1fr; }
+  .portrait-modest { width: 120px; height: 160px; }
+  .resume-actions .button { width: 100%; }
+}
+
+/* ==========================================================================
+   Print / PDF
+   Target: one readable A4 page (two if content grows). Navigation, theme control, download and
+   print buttons are removed; images and icons are bounded; headings stay
+   with their content.
+   ========================================================================== */
 
 @media print {
-  @page { size: A4; margin: 15mm; }
+  @page { size: A4; margin: 11mm 13mm; }
+
+  :root, [data-theme] {
+    --bg: #ffffff; --surface: #ffffff; --text: #101010;
+    --text-secondary: #2c2c2c; --muted: #4a4a4a;
+    --line: #c9c9c9; --accent: #2f4a38;
+  }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { background: #fff !important; color: #111 !important; font-size: 11pt; }
-  nav, footer, .theme-control, .contact-strip .pdf-download { display: none !important; }
-  .shell { width: 100% !important; max-width: none !important; margin: 0 !important; }
-  .resume-hero { border-bottom: 2px solid #333; padding-block: 0 16px; margin-bottom: 16px; flex-direction: row; align-items: center; }
-  .resume-hero h1 { font-size: 24pt; margin: 0 0 8px; color: #000 !important; }
-  .portrait-modest { width: 80px; height: 107px; box-shadow: none; border-radius: 4px; }
-  .headline { font-size: 12pt; color: #333 !important; }
-  .summary { font-size: 10.5pt; color: #444 !important; }
-  .contact-strip { padding: 8px 0; margin-bottom: 16px; border-bottom: 1px solid #ddd; }
-  .contact-strip a { color: #333 !important; }
-  .block h2 { font-size: 14pt; border-bottom: 1px solid #ddd; padding-bottom: 4px; margin-bottom: 12px; }
-  .role { border-bottom: none; margin-bottom: 16px; padding-bottom: 0; }
-  .role h3 { font-size: 12pt; color: #000 !important; }
-  .role .company { font-size: 11pt; color: #222 !important; }
-  .skill-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .skill-category { padding: 12px; border: 1px solid #ccc; }
-  .tag { border-color: #ccc; background: transparent; color: #222 !important; }
+
+  body { background: #fff !important; color: #101010 !important; font-size: 9.9pt; line-height: 1.38; }
+  body::before, body::after { display: none !important; }
+
+  .site-nav, footer, .skip-link, .resume-actions, .theme-control { display: none !important; }
+
+  .shell, .resume-container { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
+
+  .resume-hero {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center; gap: 14pt;
+    padding-bottom: 6pt; margin-bottom: 6pt;
+    border-bottom: 1.5pt solid #333;
+    break-inside: avoid;
+  }
+  .resume-hero h1 { margin: 2pt 0 3pt; font-size: 19pt; color: #000 !important; }
+  .resume-hero h1 .alias { margin-top: 2pt; font-size: 0.34em; }
+  .eyebrow { font-size: 7.5pt; letter-spacing: 0.1em; }
+  .headline { margin: 0 0 4pt; font-size: 10.5pt; color: #222 !important; }
+  .summary { font-size: 9pt; color: #333 !important; }
+
+  /* A modest portrait: recognisable, never dominating the page. */
+  .portrait-modest { width: 24mm !important; height: 31mm !important; border-radius: 2pt; box-shadow: none; }
+
+  .contact-strip { gap: 1pt 13pt; padding: 5pt 0 0; margin-bottom: 8pt; font-size: 8.2pt; }
+  .contact-strip li, .contact-strip a { min-height: 0 !important; }
+  .contact-strip a { color: #1f3a2a !important; text-decoration: none; }
+
+  .block { margin-bottom: 8pt; break-inside: auto; }
+  .block > h2 {
+    margin: 0 0 5pt; padding-bottom: 2.5pt;
+    font-size: 12pt; color: #000 !important;
+    border-bottom: 0.75pt solid #bbb;
+    break-after: avoid; break-inside: avoid;
+  }
+
+  .role { margin-bottom: 7pt; break-inside: avoid; }
+  .role h3 { font-size: 10.4pt; color: #000 !important; }
+  .role .company { font-size: 9pt; color: #24382b !important; }
+  .role .date { font-size: 8.5pt; color: #444 !important; }
+  .role ul, .bullets { padding-left: 12pt; font-size: 9pt; }
+  .role ul li, .bullets li { margin-bottom: 1.5pt; }
+
+  .skill-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6pt; break-inside: avoid; }
+  .skill-category { padding: 6pt; border: 0.75pt solid #c4c4c4; border-radius: 3pt; background: transparent; break-inside: avoid; }
+  .skill-category h3 { margin-bottom: 4pt; font-size: 9pt; }
+  .skill-category .tags { gap: 3pt; }
+  .skill-category .tag { padding: 1pt 4.5pt; border-color: #c4c4c4; background: transparent; color: #222 !important; font-size: 7.8pt; }
+
+  .plain-list li { margin-bottom: 3.5pt; font-size: 9pt; break-inside: avoid; }
+  .plain-list strong { font-size: 9.6pt; }
+
+  /* Nothing in the printed résumé may render an oversized icon or image. */
+  .brand-icon, svg { width: 9pt !important; height: 9pt !important; }
+  img { max-width: 100% !important; }
 }

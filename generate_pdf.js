@@ -1,73 +1,95 @@
-const puppeteer = require('puppeteer');
+/* Regenerates assets/Dinesh_Behera_Resume.pdf from the final resume.html.
+
+   It serves the real site locally, forces the light theme, waits for every
+   stylesheet, web font and image to finish loading, prints A4 with the print
+   stylesheet applied, then writes document metadata.
+
+   Run: node generate_pdf.js   (then: node render_pdf_pages.js to inspect it)
+*/
 const fs = require('fs');
-const path = require('path');
-const http = require('http');
+const puppeteer = require('puppeteer');
+const { PDFDocument } = require('pdf-lib');
+const serve = require('./tools_serve');
 
-async function generatePDF() {
-  console.log('Starting local server...');
-  const server = http.createServer((req, res) => {
-    let filePath = '.' + req.url;
-    if (filePath == './') filePath = './index.html';
-    const extname = String(path.extname(filePath)).toLowerCase();
-    const mimeTypes = {
-      '.html': 'text/html',
-      '.js': 'text/javascript',
-      '.css': 'text/css',
-      '.json': 'application/json',
-      '.png': 'image/png',
-      '.jpg': 'image/jpg',
-      '.gif': 'image/gif',
-      '.svg': 'image/svg+xml',
-      '.wav': 'audio/wav',
-      '.mp4': 'video/mp4',
-      '.woff': 'application/font-woff',
-      '.ttf': 'application/font-ttf',
-      '.eot': 'application/vnd.ms-fontobject',
-      '.otf': 'application/font-otf',
-      '.wasm': 'application/wasm',
-      '.webp': 'image/webp'
-    };
-    const contentType = mimeTypes[extname] || 'application/octet-stream';
+const PORT = 8125;
+const OUT = 'assets/Dinesh_Behera_Resume.pdf';
 
-    fs.readFile(filePath, (error, content) => {
-      if (error) {
-        res.writeHead(404);
-        res.end();
-      } else {
-        res.writeHead(200, { 'Content-Type': contentType });
-        res.end(content, 'utf-8');
-      }
-    });
-  });
+const META = {
+  title: 'Dinesh Behera — Senior Technical Consultant, Cloud, Platform & DevOps Engineer',
+  author: 'Dinesh Behera',
+  subject: 'Résumé — cloud, platform and DevOps engineering, automation and technical documentation',
+  keywords: ['OpenShift', 'Kubernetes', 'OpenStack', 'DevOps', 'Ansible', 'Python', 'Terraform',
+    'Linux', 'RHEL', 'Prometheus', 'Grafana', 'Cloud', 'Platform engineering', 'Technical documentation'],
+  creator: 'dinudante.in'
+};
 
-  server.listen(8123, '127.0.0.1');
-
+(async () => {
+  const server = await serve.start(process.cwd(), PORT);
+  const browser = await puppeteer.launch({ headless: 'new' });
   try {
-    console.log('Generating PDF...');
-    const browser = await puppeteer.launch({ headless: 'new' });
     const page = await browser.newPage();
-    
-    // Set to light theme explicitly
+    const failures = [];
+    page.on('requestfailed', r => failures.push(r.url()));
+    page.on('response', r => { if (r.status() >= 400) failures.push(`${r.status()} ${r.url()}`); });
+
     await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'light' }]);
-    
-    const resumeUrl = 'http://127.0.0.1:8123/resume.html';
-    
-    await page.goto(resumeUrl, { waitUntil: 'networkidle0' });
-    
-    await page.pdf({
-      path: 'assets/Dinesh_Behera_Resume.pdf',
+    await page.setViewport({ width: 1100, height: 1400 });
+
+    await page.goto(`http://127.0.0.1:${PORT}/resume.html`, { waitUntil: 'networkidle0', timeout: 60000 });
+
+    // The printed résumé is always the light theme, whatever a visitor saved.
+    await page.evaluate(() => { document.documentElement.dataset.theme = 'day'; });
+
+    // Print media changes which image candidate is used; settle it before printing.
+    await page.emulateMediaType('print');
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+      const imgs = Array.from(document.images);
+      await Promise.all(imgs.map(img => img.complete && img.naturalWidth > 0
+        ? Promise.resolve()
+        : new Promise(res => { img.addEventListener('load', res, { once: true }); img.addEventListener('error', res, { once: true }); })));
+    });
+
+    const state = await page.evaluate(() => ({
+      sheets: document.styleSheets.length,
+      printRules: Array.from(document.styleSheets).reduce((n, s) => {
+        try { return n + Array.from(s.cssRules).filter(r => r.type === CSSRule.MEDIA_RULE && r.conditionText.includes('print')).length; }
+        catch (_) { return n; }
+      }, 0),
+      images: Array.from(document.images).map(i => ({ src: i.currentSrc, ok: i.complete && i.naturalWidth > 0 })),
+      fonts: document.fonts.status
+    }));
+
+    if (failures.length) throw new Error('resource failures before print:\n  ' + failures.join('\n  '));
+    const brokenImages = state.images.filter(i => !i.ok);
+    if (brokenImages.length) throw new Error('images did not load: ' + JSON.stringify(brokenImages));
+    if (state.printRules === 0) throw new Error('no @media print rules reached the page — print stylesheet missing');
+
+    console.log(`stylesheets: ${state.sheets}, print blocks: ${state.printRules}, fonts: ${state.fonts}`);
+    state.images.forEach(i => console.log(`  image ok: ${i.src}`));
+
+    const bytes = await page.pdf({
       format: 'A4',
       printBackground: true,
       displayHeaderFooter: false,
-      margin: { top: '0mm', right: '0mm', bottom: '0mm', left: '0mm' } 
-      // margins handled by CSS @page
+      preferCSSPageSize: true,   // honour the @page size/margins in resume.css
+      margin: { top: '0', right: '0', bottom: '0', left: '0' }
     });
-    
-    await browser.close();
-    console.log('PDF Generated successfully at assets/Dinesh_Behera_Resume.pdf');
+
+    const doc = await PDFDocument.load(bytes);
+    doc.setTitle(META.title);
+    doc.setAuthor(META.author);
+    doc.setSubject(META.subject);
+    doc.setKeywords(META.keywords);
+    doc.setCreator(META.creator);
+    doc.setProducer('dinudante.in resume pipeline');
+    doc.setModificationDate(new Date());
+    fs.writeFileSync(OUT, await doc.save());
+
+    const size = fs.statSync(OUT).size;
+    console.log(`\nWrote ${OUT}: ${doc.getPageCount()} page(s), ${(size / 1024).toFixed(1)} KB`);
   } finally {
+    await browser.close();
     server.close();
   }
-}
-
-generatePDF().catch(console.error);
+})().catch(e => { console.error('PDF generation failed:', e.message); process.exit(1); });

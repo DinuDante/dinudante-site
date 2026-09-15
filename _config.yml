@@ -1,7 +1,31 @@
-# GitHub Pages: keep engineering notes and local source evidence out of the site.
+# GitHub Pages: keep engineering notes, build tooling and QA evidence out of
+# the published site. Only the public routes and assets/ are served.
 exclude:
   - Sources
   - scripts
+  - tools
+  - screenshots
+  - masters
+  - node_modules
+  - package.json
+  - package-lock.json
   - PROJECT_CONTEXT.md
   - IMPLEMENTATION_STATUS.md
   - QA_REPORT.md
+  - AUDIT.md
+  - ASSET_MANIFEST.md
+  - HANDOFF.md
+  - README_MAINTENANCE.md
+  - build_images.js
+  - build_pages.js
+  - build_setup.js
+  - check_links.js
+  - curate_dataset.js
+  - generate_pdf.js
+  - inspect_pdf.js
+  - master_dataset.json
+  - qa_interactions.js
+  - qa_run.js
+  - render_pdf_pages.js
+  - site_shell.js
+  - tools_serve.js

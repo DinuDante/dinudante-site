@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Setup catalogue — discovery controls and gear cards.
+   Shared tokens, header, buttons and footer come from site.v4.css.
+   ========================================================================== */
+
+.setup-hero { padding-block: clamp(32px, 5vw, 56px) clamp(20px, 3vw, 28px); }
+.setup-hero h1 { margin: 10px 0 14px; font-size: clamp(2.4rem, 6vw, 4rem); }
+.setup-hero .intro { max-width: 62ch; margin: 0; color: var(--text-secondary); font-size: clamp(1rem, 1.6vw, 1.1rem); }
+
+.setup-facts {
+  display: flex; flex-wrap: wrap; gap: 6px 22px;
+  margin: 22px 0 0; padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: 0.76rem; color: var(--muted);
+  list-style: none;
+}
+.setup-facts strong { color: var(--text); font-weight: 600; }
+
+.affiliate-note {
+  margin: 20px 0 0; padding: 14px 16px;
+  border: 1px solid var(--line); border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  color: var(--text-secondary); font-size: 0.84rem;
+}
+.affiliate-note a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* --------------------------------------------------------- section head */
+
+.catalogue-section { padding-block: clamp(36px, 5vw, 56px) 0; }
+.catalogue-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px 20px;
+  padding-bottom: 14px; margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.catalogue-head h2 { margin: 0; font-size: clamp(1.3rem, 2.4vw, 1.75rem); }
+.catalogue-count { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); }
+
+/* ------------------------------------------------------------- controls */
+
+.discovery {
+  position: sticky; top: var(--nav-height); z-index: 30;
+  display: grid; gap: 12px;
+  padding-block: 14px; margin-bottom: 20px;
+  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.search-field { position: relative; display: flex; }
+.search-field input {
+  width: 100%; min-height: var(--control-height);
+  padding: 0 44px 0 16px;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); color: var(--text);
+  font: inherit; font-size: 0.95rem;
+}
+.search-field input::placeholder { color: var(--muted); }
+.search-field input:focus-visible { border-color: var(--accent); }
+.search-clear {
+  position: absolute; top: 50%; right: 6px; transform: translateY(-50%);
+  display: none; align-items: center; justify-content: center;
+  width: 34px; height: 34px; padding: 0;
+  border: 0; border-radius: 50%;
+  background: transparent; color: var(--muted); cursor: pointer; font-size: 1.1rem; line-height: 1;
+}
+.search-clear:hover { color: var(--text); background: color-mix(in srgb, var(--text) 10%, transparent); }
+.search-field.has-value .search-clear { display: inline-flex; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.filter-btn {
+  min-height: var(--control-height); padding: 0 16px;
+  border: 1px solid var(--line); border-radius: var(--radius-pill);
+  background: transparent; color: var(--text-secondary);
+  font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.02em;
+  white-space: nowrap; cursor: pointer;
+  transition: background 0.16s, border-color 0.16s, color 0.16s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--text); }
+.filter-btn[aria-pressed="true"] {
+  background: var(--deep); border-color: var(--deep); color: var(--on-deep); font-weight: 600;
+}
+.filter-btn .filter-n { color: var(--muted); font-family: var(--font-mono); font-size: 0.92em; }
+.filter-btn[aria-pressed="true"] .filter-n { color: var(--on-deep); }
+
+.reset-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.reset-row[hidden] { display: none; }
+.active-filter-summary { color: var(--muted); font-size: 0.8rem; }
+
+/* ----------------------------------------------------------------- grid */
+
+.gear-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  gap: 20px;
+  margin: 0 0 clamp(40px, 6vw, 64px); padding: 0;
+  list-style: none;
+}
+
+.gear-card {
+  display: flex; flex-direction: column; overflow: hidden;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface);
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+.gear-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 12px 26px var(--shadow); }
+.gear-card:focus-within { border-color: var(--accent); }
+.gear-card[hidden] { display: none; }
+/* A hash target is highlighted briefly so an arriving visitor can see it. */
+.gear-card:target, .gear-card.is-target { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+
+.gear-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3; width: 100%;
+  padding: 16px;
+  display: flex; align-items: center; justify-content: center;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+}
+[data-theme="night"] .gear-card__media { background: #f4f3ef; }
+.gear-card__media img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+
+.must-have-badge {
+  position: absolute; top: 10px; left: 10px; z-index: 2;
+  padding: 4px 9px; border-radius: 4px;
+  background: var(--accent); color: var(--on-accent);
+  font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+.gear-card__body { display: flex; flex: 1; flex-direction: column; gap: 8px; padding: 14px 16px 16px; }
+.gear-cat { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.gear-card__title { margin: 0; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
+.gear-card__title a { display: inline; }
+.gear-card__title a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+.gear-note { display: flex; align-items: center; gap: 6px; margin: 0; color: var(--muted); font-size: 0.75rem; }
+.gear-note .brand-icon { width: 14px; height: 14px; color: var(--accent); }
+.gear-note.is-new .brand-icon { color: var(--purple); }
+
+.gear-details { margin-top: auto; font-size: 0.74rem; color: var(--muted); }
+.gear-details summary { min-height: 32px; display: flex; align-items: center; cursor: pointer; color: var(--muted); }
+.gear-details summary:hover { color: var(--text); }
+.gear-details p { margin: 6px 0 0; overflow-wrap: anywhere; }
+
+.gear-card__footer { margin-top: 12px; }
+.gear-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: var(--control-height);
+  font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-secondary);
+}
+.gear-cta:hover { color: var(--accent); }
+
+/* --------------------------------------------------------- empty state */
+
+.empty-state {
+  padding: 40px 24px; margin-bottom: 48px;
+  border: 1px dashed var(--line); border-radius: var(--radius);
+  text-align: center;
+}
+.empty-state[hidden] { display: none; }
+.empty-state h3 { margin: 0 0 8px; font-size: 1.25rem; }
+.empty-state p { margin: 0 0 18px; color: var(--muted); }
+
+.catalogue-foot {
+  padding-block: 24px 0; margin-bottom: clamp(40px, 6vw, 64px);
+  border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 0.78rem;
+}
+
+@media (max-width: 720px) {
+  /* One scrollable row of chips keeps the sticky bar shallow on phones. */
+  .filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .filters::-webkit-scrollbar { display: none; }
+  .filter-btn { padding: 0 13px; font-size: 0.74rem; }
+}
+
+@media (max-width: 620px) {
+  /* Two compact columns roughly halve the scroll depth of 93 products. */
+  .gear-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .gear-card__body { gap: 6px; padding: 12px; }
+  .gear-card__title { font-size: 0.85rem; }
+  .gear-cat { font-size: 0.58rem; }
+  .gear-note { font-size: 0.68rem; }
+  .gear-details { font-size: 0.68rem; }
+  .gear-cta { font-size: 0.68rem; }
+}
+
+@media (max-width: 340px) {
+  .gear-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .discovery, .empty-state, .must-have-section { display: none !important; }
+  .gear-card { break-inside: avoid; }
+}
+
+/* The catalogue is long by design; give people a way back to the controls. */
+.back-to-top { display: inline-flex; align-items: center; gap: 6px; min-height: var(--control-height); font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent); }
+.back-to-top:hover { text-decoration: underline; text-underline-offset: 3px; }
