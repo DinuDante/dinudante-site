@@ -1,5 +1,11 @@
 # GitHub Pages: keep engineering notes, build tooling and QA evidence out of
 # the published site. Only the public routes and assets/ are served.
+#
+# This only works while there is NO .nojekyll file in the repository root. A
+# .nojekyll disables Jekyll entirely, which silently ignores everything below —
+# that is how every build script, master_dataset.json, the QA reports and the
+# 1.79 MB masters/logo.png came to be downloadable from the live site.
+# None of the pages use front matter or Liquid, so Jekyll copies them verbatim.
 exclude:
   - Sources
   - scripts
@@ -24,6 +30,7 @@ exclude:
   - generate_pdf.js
   - inspect_pdf.js
   - master_dataset.json
+  - measure_perf.js
   - qa_interactions.js
   - qa_run.js
   - render_pdf_pages.js

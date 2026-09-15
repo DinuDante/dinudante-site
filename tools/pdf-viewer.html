@@ -1,0 +1,29 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>PDF page renderer (tooling only)</title>
+<style>body{margin:0;background:#888}canvas{display:block;margin:0 0 8px}</style>
+<div id="pages"></div>
+<script type="module">
+import * as pdfjsLib from '/node_modules/pdfjs-dist/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/node_modules/pdfjs-dist/build/pdf.worker.mjs';
+const file = new URLSearchParams(location.search).get('file');
+try {
+  const doc = await pdfjsLib.getDocument({ url: file, cMapUrl: '/node_modules/pdfjs-dist/cmaps/', cMapPacked: true,
+    standardFontDataUrl: '/node_modules/pdfjs-dist/standard_fonts/' }).promise;
+  window.__pdfPages = doc.numPages;
+  const host = document.getElementById('pages');
+  for (let i = 1; i <= doc.numPages; i++) {
+    const p = await doc.getPage(i);
+    const viewport = p.getViewport({ scale: 1.5 });
+    const canvas = document.createElement('canvas');
+    canvas.id = 'page-' + i;
+    canvas.width = Math.floor(viewport.width);
+    canvas.height = Math.floor(viewport.height);
+    host.appendChild(canvas);
+    await p.render({ canvasContext: canvas.getContext('2d'), viewport, background: '#ffffff' }).promise;
+  }
+  window.__pdfReady = true;
+} catch (e) {
+  window.__pdfError = String(e && e.message || e);
+}
+</script>

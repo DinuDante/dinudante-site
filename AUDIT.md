@@ -198,9 +198,32 @@ it was replaced by a purpose-built 1200 × 630 `share-card.png`. See
 | Item | Why | What is needed |
 | --- | --- | --- |
 | Physical iOS Safari and Android Chrome | No device or device cloud available here. | A real-device pass, especially the mobile menu and iOS print. |
-| Firefox and WebKit engines | Only Chromium (Puppeteer 25 / Chrome 141) is installed. | Cross-engine run of `qa_run.js`. |
+| Firefox and WebKit engines | Both were downloaded successfully (`playwright install firefox webkit`), but this machine refuses to execute them: `An Application Control policy has blocked this file`. That is a Windows Application Control policy, not a missing dependency, and it is not something to work around. | `node tools/cross_browser.js` on a machine without that policy. The suite is written and passes end to end on Chromium. |
 | Screen-reader behaviour | Automated axe checks are not a screen-reader audit. | NVDA/VoiceOver pass over the menu, filters and empty state. |
 | Field Core Web Vitals (LCP/INP/CLS at p75) | Requires real traffic; no CrUX data is claimed. | Field data once the release has traffic. |
 | Exact leadership dates for the two “Concurrent” roles | Owner-dependent fact. The prompt notes “Concurrent” is not a substitute for verified dates; inventing them is not an option. | Owner confirmation of start dates. |
 | Current/ongoing education | Owner-dependent fact. | Owner confirmation. |
 | Product colour/size variant matching against physical items | The image and URL come from the same marketplace listing, but physical verification is owner-dependent. | Owner spot-check. |
+
+## Defects found in the continuation session (16 September 2026)
+
+These were found by measuring rendered geometry and hit-testing rather than by
+re-reading the source, which is why the earlier zero-overflow and zero-violation
+results did not surface them.
+
+| Finding | Evidence | Resolution |
+| --- | --- | --- |
+| The catalogue grid left tablets scrolling **further than phones**. `minmax(min(100%, 250px), 1fr)` could not fit a third column until ~900 px, so 600–820 px stayed on two stretched cards (380 × 610 px at 820 px) and the page ran to **27,833 px** — against 19,733 px at 390 px. | Column/height sweep across 14 widths, before and after. | Track minimum lowered to 210 px. 768 px and 820 px now take three columns; page depth falls to 15,313 px (-43%). |
+| At 320 px the grid dropped to a single column and the page reached **43,925 px** — the "overwhelming mobile scroll" the brief rules out, at the exact width it names for reflow. | Same sweep. | The `max-width: 340px` single-column rule is replaced by a `max-width: 380px` rule that keeps two compact columns. 320 px now renders 19,669 px (-55%) with no overflow. |
+| Product cards were **not aligned within a row**: `.gear-card__media` declared `aspect-ratio: 4 / 3`, but as a flex item its automatic minimum size let a tall product photograph push the box open. Measured media heights ranged **164 px to 281 px**, so category, title and note started at different heights across a row. | Per-card measurement of all 93 media boxes. | The image is placed absolutely inside the ratio box (`inset: 16px`, `object-fit: contain`), so the box governs. All 93 media boxes are now exactly 164 px and 0 of 19 rows have misaligned titles. |
+| **Every engineering file on the site was publicly downloadable.** `_config.yml` has excluded build scripts, `master_dataset.json`, the QA reports, `PROJECT_CONTEXT.md` and `masters/` since the cleanup release — but a `.nojekyll` file in the repository root disables Jekyll completely, so that list was never applied. `measure_perf.js` was also missing from it. | `https://dinudante.in/qa_run.js`, `/build_setup.js`, `/master_dataset.json`, `/QA_REPORT.md`, `/package.json`, `/site_shell.js` and `/measure_perf.js` all returned **200**. So did `/masters/logo.png` — **1,833,082 bytes**, the master the audit's finding 11 said must not be served. | `.nojekyll` removed so `_config.yml` takes effect, and `measure_perf.js` added to the exclude list. No page uses front matter or Liquid, so Jekyll copies all five routes verbatim. Verified against the deployed site after the release. |
+| `qa_interactions.js` drove the featured-reveal test by clicking the centre of the featured link's bounding box. Filtering shortens the document, the browser clamps the scroll offset, and that centre could land under the sticky header — the click then hit the brand mark and navigated home, so the test failed for a reason unrelated to the behaviour under test. | Hit-test at the click point returned `a[href="/"]`, not the featured link. | The test now scrolls the link clear (the root already carries `scroll-padding-top`) and clicks its first line box. The product behaviour was never broken; the harness was. |
+
+### False positive corrected during this session
+
+The first version of `tools/focus_audit.js` flagged the skip link as obscured on
+all 30 route/theme/width combinations, because it compared bounding boxes: the
+focused skip link does sit geometrically inside the header's box. Hit-testing
+and a screenshot both show it painting **above** the header (`z-index: 100` against
+the header's `50`) with its focus ring intact. The audit was rewritten to
+hit-test sample points instead of intersecting rectangles. No defect existed.

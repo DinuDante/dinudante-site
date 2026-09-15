@@ -1,0 +1,28 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>PDF inspector (tooling only)</title>
+<script type="module">
+import * as pdfjsLib from '/node_modules/pdfjs-dist/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/node_modules/pdfjs-dist/build/pdf.worker.mjs';
+const file = new URLSearchParams(location.search).get('file');
+try {
+  const doc = await pdfjsLib.getDocument({ url: file, standardFontDataUrl: '/node_modules/pdfjs-dist/standard_fonts/' }).promise;
+  const out = { pages: doc.numPages, links: [], fonts: new Set(), textChars: 0, pageSizes: [] };
+  const meta = await doc.getMetadata();
+  out.info = meta.info;
+  for (let i = 1; i <= doc.numPages; i++) {
+    const page = await doc.getPage(i);
+    const vp = page.getViewport({ scale: 1 });
+    out.pageSizes.push({ w: +vp.width.toFixed(1), h: +vp.height.toFixed(1) });
+    const annots = await page.getAnnotations();
+    annots.forEach(a => { if (a.url) out.links.push({ page: i, url: a.url }); });
+    const content = await page.getTextContent();
+    content.items.forEach(it => { out.textChars += (it.str || '').length; });
+    const ops = await page.getOperatorList();
+    Object.keys(page.commonObjs._objs || {}).forEach(k => { if (k.startsWith('g_')) out.fonts.add(k); });
+    (content.styles ? Object.values(content.styles) : []).forEach(s => out.fonts.add(s.fontFamily));
+  }
+  out.fonts = [...out.fonts];
+  window.__result = out;
+} catch (e) { window.__error = String(e && e.message || e); }
+</script>

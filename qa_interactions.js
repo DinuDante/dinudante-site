@@ -318,7 +318,17 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       await page.type('#gear-search', 'ARZOPA');
       await sleep(150);
       const hiddenBefore = await page.$eval('#item-B07DKZCZ89', e => e.hidden);
-      await page.click('a[href="#item-B07DKZCZ89"]');
+      /* Filtering shortens the document, so the browser can clamp the scroll offset and
+         leave this link underneath the sticky header. Scroll it clear first (the root
+         carries scroll-padding-top for exactly this) and click its first line box, so
+         the click lands on the link a person would actually see. */
+      await page.evaluate(() => document.querySelector('a[href="#item-B07DKZCZ89"]').scrollIntoView({ block: 'center' }));
+      await sleep(250);
+      const box = await page.evaluate(() => {
+        const r = document.querySelector('a[href="#item-B07DKZCZ89"]').getClientRects()[0];
+        return { x: r.left + Math.min(r.width / 2, 40), y: r.top + r.height / 2 };
+      });
+      await page.mouse.click(box.x, box.y);
       await sleep(900);
       const revealed = await page.evaluate(() => {
         const t = document.getElementById('item-B07DKZCZ89');
