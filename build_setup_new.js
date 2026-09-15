@@ -32,7 +32,7 @@ function createCard(item, isMustHave = false) {
     href = '#item-' + item.asin;
     target = '';
     className = 'gear-card must-have-spotlight';
-    cta = 'View Canonical Product &darr;';
+    cta = 'View on Amazon &darr;';
   }
   
   const idAttr = isMustHave ? '' : ' id="item-' + item.asin + '"';
@@ -65,13 +65,14 @@ if (mainStart > -1 && footerStart > -1) {
   <main id="main-content" tabindex="-1">
     <section class="shell setup-hero" style="padding-bottom: 0;">
       <span class="eyebrow">MY SETUP</span>
-      <h1>Hardware and tools behind my cloud engineering, coding, teaching, maker projects and content workflow.</h1>
+      <h1>My setup</h1>
+      <p class="intro">Hardware and tools behind my cloud engineering, coding, teaching, maker projects and content workflow.</p>
       <div style="font-family: var(--font-mono); color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px;">
         <strong>${master.length} PRODUCTS</strong> &nbsp;&middot;&nbsp; PERSONALLY PURCHASED &middot; USED &middot; TESTED
       </div>
     </section>
 
-    <div class="catalogue-container">
+    <div class="shell catalogue-container">
       ${mustHaves.length > 0 ? `
       <div style="margin-top: 48px;">
         <h2 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 16px;">MY MUST-HAVE PICKS</h2>
@@ -117,7 +118,7 @@ if (styleStart > -1 && styleEnd > -1) {
   html = html.substring(0, styleStart) + `
   <style>
       .setup-hero { padding: 60px 0 40px; }
-      .catalogue-container { width: min(1320px, calc(100% - 40px)); margin-inline: auto; }
+      .catalogue-container { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
       .filters { display: flex; gap: 8px; margin-top: 16px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; flex-wrap: wrap; }
       .filters::-webkit-scrollbar { display: none; }
       .filter-btn { background: transparent; border: 1px solid var(--line); color: var(--muted); padding: 8px 16px; border-radius: 99px; font-size: 0.75rem; font-family: var(--font-body); cursor: pointer; transition: all 0.2s; white-space: nowrap; height: 38px; }
@@ -161,7 +162,7 @@ const schema = {
     }
   }))
 };
-const schemaHtml = '<script type="application/ld+json">\\n' + JSON.stringify(schema, null, 2) + '\\n</script>\\n</head>';
+const schemaHtml = '\n<script type="application/ld+json">\n' + JSON.stringify(schema, null, 2) + '\n</script>\n</head>';
 html = html.replace(/<script type="application\/ld\+json">.*?<\/script>\s*<\/head>/s, '</head>');
 html = html.replace('</head>', schemaHtml);
 

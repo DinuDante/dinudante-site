@@ -55,8 +55,8 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 92px; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; font-synthesis: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-body { font-family: var(--font-body); font-size: var(--text-base); color: var(--text); line-height: 1.65; background: var(--bg); margin: 0; padding: 0; transition: background-color 0.25s, color 0.25s; overflow-x: hidden; }
+html { scroll-behavior: smooth;  scroll-padding-top: 92px; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; font-synthesis: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: var(--font-body); font-size: var(--text-base); color: var(--text); line-height: 1.65; background: var(--bg); margin: 0; padding: 0; transition: background-color 0.25s, color 0.25s;  }
 
 h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 400; color: var(--text); }
 h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; }
@@ -81,7 +81,7 @@ svg { max-width: 100%; }
 .mark:hover .mark-symbol { transform: rotate(12deg); }
 
 .nav-actions { display: flex; align-items: center; gap: 20px; }
-.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
 .nav-link { font-size: 0.85rem; color: var(--muted); position: relative; padding: 4px 0; }
 .nav-link:hover { color: var(--text); }
 .nav-link::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: linear-gradient(90deg, var(--red), var(--purple), var(--green)); transform: scaleX(0); transition: transform 0.2s; }
@@ -116,7 +116,7 @@ footer { padding: 40px 0; border-top: 1px solid var(--line); margin-top: 60px; }
 
 /* Responsive Nav */
 @media (max-width: 900px) {
-  .nav-links { display: none; }
+  .menu-ready .nav-links { display: none; }
   .menu-ready .menu-toggle { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); cursor: pointer; }
   .menu-ready .nav-links.is-open { display: flex !important; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--surface); padding: 20px; border-bottom: 1px solid var(--line); box-shadow: 0 10px 20px var(--shadow); align-items: flex-start; z-index: 9999; }
 }

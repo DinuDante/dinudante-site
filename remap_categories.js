@@ -4,7 +4,7 @@ const master = JSON.parse(fs.readFileSync('master_dataset.json', 'utf8'));
 
 master.forEach(item => {
   const t = item.title.toLowerCase();
-  const c = item.category.toLowerCase();
+  const c = (item.category || item.primaryCategory || '').toLowerCase();
   
   let newCat = "COMPUTING & MOBILE"; // Fallback, will refine
   
@@ -45,10 +45,11 @@ master.forEach(item => {
   }
   
   // Specific hardcoded fixes based on previous list
-  if (t.includes('tpms') || t.includes('tyre inflator')) newCat = 'COMPUTING & MOBILE';
-  if (t.includes('pull up bar') || t.includes('shoe') || t.includes('water bottle')) newCat = 'WORKSPACE';
-  if (t.includes('backpack')) newCat = 'COMPUTING & MOBILE';
+  if (t.includes('tpms') || t.includes('tyre inflator') || t.includes('tyre')) newCat = 'EVERYDAY & UTILITY';
+  if (t.includes('pull up bar') || t.includes('shoe') || t.includes('water bottle') || t.includes('knife')) newCat = 'EVERYDAY & UTILITY';
+  if (t.includes('backpack') || t.includes('keychain') || t.includes('holster') || t.includes('arc reactor')) newCat = 'EVERYDAY & UTILITY';
   if (t.includes('camera') && t.includes('cctv')) newCat = 'CREATOR GEAR';
+  if (t.includes('microphone') || t.includes('mic')) newCat = 'AUDIO';
   
   item.primaryCategory = newCat;
   item.category = newCat; // Also update legacy field just in case
