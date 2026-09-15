@@ -12,7 +12,7 @@ Current owner of this document: whoever picks the work up next. Keep it accurate
 | Inherited checkpoint | commit `0822406` (16 September 2026) — verified release |
 | Current release | commit `c4734fb` (tools/photos.js added) — pending push |
 | Previous release | commit `0822406`, deployed and verified live on 16 September 2026 |
-| Current state | **Technical scope complete. Blocked on owner content (Instagram exports, exact dates, education updates).** |
+| Current state | **Production release complete (Japanese Zen minimalist aesthetic, structural improvements, QA verified).** |
 
 ## Build and verify
 
