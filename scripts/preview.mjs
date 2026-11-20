@@ -4,7 +4,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const publicFiles = new Set(['index.html','resume.html','privacy/index.html','404.html','favicon.svg','robots.txt','sitemap.xml']);
+const publicFiles = new Set(['index.html','resume.html','setup.html','favicon.ico','privacy/index.html','404.html','favicon.svg','robots.txt','sitemap.xml']);
 export function previewServer(directory = root) {
   return http.createServer(async (req, res) => {
     let name;
@@ -12,7 +12,7 @@ export function previewServer(directory = root) {
     catch { res.writeHead(400); res.end(); return; }
     if (!name || name.endsWith('/')) name += 'index.html';
     const allowed = publicFiles.has(name) || /^assets\/[\w.-]+$/.test(name);
-    const types = {'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.svg':'image/svg+xml','.webp':'image/webp','.pdf':'application/pdf','.xml':'application/xml','.txt':'text/plain'};
+    const types = {'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.ico':'image/x-icon','.png':'image/png','.svg':'image/svg+xml','.webp':'image/webp','.pdf':'application/pdf','.xml':'application/xml','.txt':'text/plain'};
     try {
       if (!allowed) throw new Error('Not public');
       const data = await readFile(path.join(directory, name));

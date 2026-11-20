@@ -15,24 +15,37 @@ const MIME = {
 };
 
 function start(root, port) {
-  const server = http.createServer((req, res) => {
-    let urlPath = decodeURIComponent(req.url.split('?')[0].split('#')[0]);
-    if (urlPath.endsWith('/')) urlPath += 'index.html';
-    const filePath = path.join(root, urlPath);
-    if (!filePath.startsWith(path.resolve(root))) { res.writeHead(403); return res.end(); }
-    fs.readFile(filePath, (err, content) => {
-      if (err) {
-        // Mirror GitHub Pages: unknown paths serve 404.html with a 404 status.
-        return fs.readFile(path.join(root, '404.html'), (e2, body) => {
-          res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-          res.end(e2 ? 'Not found' : body);
-        });
+  const directory = fs.realpathSync(root);
+  const server = http.createServer(async (req, res) => {
+    let pathname;
+    try {
+      pathname = decodeURIComponent(req.url.split('?')[0]);
+      if (pathname.includes('\0')) throw new Error('Invalid path');
+    } catch {
+      res.writeHead(400).end();
+      return;
+    }
+    if (pathname.endsWith('/')) pathname += 'index.html';
+    try {
+      const file = await fs.promises.realpath(path.join(directory, pathname));
+      const relative = path.relative(directory, file);
+      if (!relative || relative === '..' || relative.startsWith('..' + path.sep) || path.isAbsolute(relative)) {
+        res.writeHead(403).end();
+        return;
       }
-      res.writeHead(200, { 'Content-Type': MIME[path.extname(filePath).toLowerCase()] || 'application/octet-stream' });
+      const content = await fs.promises.readFile(file);
+      res.writeHead(200, { 'Content-Type': MIME[path.extname(file).toLowerCase()] || 'application/octet-stream' });
       res.end(content);
-    });
+    } catch {
+      const body = await fs.promises.readFile(path.join(directory, '404.html')).catch(() => 'Not found');
+      res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(body);
+    }
   });
-  return new Promise(resolve => server.listen(port, '127.0.0.1', () => resolve(server)));
+  return new Promise((resolve, reject) => {
+    server.once('error', reject);
+    server.listen(port, '127.0.0.1', () => resolve(server));
+  });
 }
 
 module.exports = { start };

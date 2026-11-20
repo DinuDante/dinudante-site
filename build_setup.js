@@ -123,7 +123,7 @@ const html = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0d1512">
+  <meta name="theme-color" content="#0c100e">
   <link rel="canonical" href="https://dinudante.in/setup.html">
   <title>My setup — Dinesh Behera | Dinu | DinuDante</title>
   <meta name="description" content="The hardware Dinesh Behera actually uses for cloud engineering, teaching, making and content work. Search and filter the full gear list.">
@@ -133,10 +133,10 @@ const html = `<!doctype html>
   <!--head:start-->
   <!--head:end-->
   <script type="application/ld+json">
-${JSON.stringify(collectionPage, null, 2)}
+${JSON.stringify(collectionPage, null, 2).replace(/</g, '\\u003c')}
   </script>
   <script type="application/ld+json">
-${JSON.stringify(itemList, null, 2)}
+${JSON.stringify(itemList, null, 2).replace(/</g, '\\u003c')}
   </script>
 </head>
 <body>
@@ -209,7 +209,7 @@ ${JSON.stringify(itemList, null, 2)}
   <!--footer:end-->
   <!--script:start-->
   <!--script:end-->
-  <script src="/assets/setup.js?v=20260915" defer></script>
+  <script src="/assets/setup.js?v=20261120" defer></script>
 </body>
 </html>
 `;

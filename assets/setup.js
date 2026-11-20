@@ -37,7 +37,7 @@
     buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === value)));
   }
 
-  function apply() {
+  function apply(dropHiddenFragment = false) {
     let visible = 0;
     for (const item of items) {
       const matchesCategory = activeFilter === 'all' || item.dataset.category === activeFilter;
@@ -63,23 +63,31 @@
     }
 
     if (searchField) searchField.classList.toggle('has-value', input.value !== '');
-    syncUrlState();
+    const linkedItem = dropHiddenFragment && location.hash.startsWith('#item-')
+      ? document.getElementById(location.hash.slice(1)) : null;
+    syncUrlState(linkedItem && linkedItem.hidden ? '' : location.hash);
     return visible;
   }
 
   /* Keep the current view in the URL so browser back/forward and a reload
      restore what the visitor was looking at. */
   let suppressUrlSync = false;
-  function syncUrlState() {
+  function syncUrlState(hash) {
     if (suppressUrlSync) return;
-    const params = new URLSearchParams();
-    if (activeFilter !== 'all') params.set('category', activeFilter);
-    if (query !== '') params.set('q', input.value.trim());
-    const search = params.toString();
-    const next = location.pathname + (search ? '?' + search : '') + location.hash;
+    const next = viewUrl(hash);
     if (next !== location.pathname + location.search + location.hash) {
       history.replaceState(null, '', next);
     }
+  }
+
+  function viewUrl(hash) {
+    const params = new URLSearchParams(location.search);
+    if (activeFilter === 'all') params.delete('category');
+    else params.set('category', activeFilter);
+    if (query) params.set('q', input.value.trim());
+    else params.delete('q');
+    const search = params.toString();
+    return location.pathname + (search ? '?' + search : '') + hash;
   }
 
   function readUrlState() {
@@ -102,8 +110,8 @@
 
   /* ------------------------------------------------------------ events */
 
-  input.addEventListener('input', () => { query = normalise(input.value); apply(); });
-  input.addEventListener('search', () => { query = normalise(input.value); apply(); });
+  input.addEventListener('input', () => { query = normalise(input.value); apply(true); });
+  input.addEventListener('search', () => { query = normalise(input.value); apply(true); });
 
   if (clearBtn) clearBtn.addEventListener('click', () => { input.value = ''; query = ''; apply(); input.focus(); });
   if (resetBtn) resetBtn.addEventListener('click', () => resetAll(input));
@@ -113,7 +121,7 @@
     const btn = event.target.closest('.filter-btn');
     if (!btn) return;
     setFilter(btn.dataset.filter);
-    apply();
+    apply(true);
   });
 
   /* ------------------------------------------- featured and hash links */
@@ -122,9 +130,8 @@
 
   function revealTarget(hash, smooth) {
     if (!hash || hash.indexOf('#item-') !== 0) return false;
-    let target;
-    try { target = container.querySelector(hash); } catch (_) { return false; }
-    if (!target) return false;
+    const target = document.getElementById(hash.slice(1));
+    if (!target || !container.contains(target)) return false;
 
     // A filter or search must never hide the item a link points at.
     if (target.hidden) {
@@ -145,16 +152,18 @@
   // Featured cards and any other in-page item link.
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href^="#item-"]');
-    if (!link) return;
+    if (!link || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     const hash = link.getAttribute('href');
     event.preventDefault();
     suppressUrlSync = true;
     const ok = revealTarget(hash, !matchMedia('(prefers-reduced-motion: reduce)').matches);
     suppressUrlSync = false;
-    if (ok) history.pushState(null, '', location.pathname + location.search + hash);
+    if (ok && viewUrl(hash) !== location.pathname + location.search + location.hash) {
+      history.pushState(null, '', viewUrl(hash));
+    }
   });
 
-  window.addEventListener('hashchange', () => revealTarget(location.hash, true));
+  window.addEventListener('hashchange', () => revealTarget(location.hash, !matchMedia('(prefers-reduced-motion: reduce)').matches));
   window.addEventListener('popstate', () => {
     suppressUrlSync = true;
     readUrlState();

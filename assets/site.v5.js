@@ -4,6 +4,8 @@
    links only collapse behind the menu button once `menu-ready` is set here. */
 (() => {
   const root = document.documentElement;
+  const printButton = document.getElementById('print-resume');
+  if (printButton) printButton.addEventListener('click', () => window.print());
 
   /* ------------------------------------------------------------ theme */
 

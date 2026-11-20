@@ -20,6 +20,7 @@ exclude:
   - QA_REPORT.md
   - AUDIT.md
   - ASSET_MANIFEST.md
+  - RELEASE_CLOSEOUT.md
   - HANDOFF.md
   - README_MAINTENANCE.md
   - build_images.js

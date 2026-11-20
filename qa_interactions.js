@@ -345,6 +345,16 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
         hiddenBefore === true && revealed.hidden === false && revealed.inViewport && revealed.focused && revealed.hash === '#item-B07DKZCZ89',
         JSON.stringify(revealed));
 
+      check('featured item URL clears the incompatible search', !new URL(page.url()).searchParams.has('q'));
+      await page.goBack();
+      check('Back restores the search before the featured item', await page.$eval('#gear-search', el => el.value) === 'ARZOPA');
+      await page.goForward();
+      check('Forward restores the revealed item', await page.$eval('#item-B07DKZCZ89', el => !el.hidden));
+      await page.type('#gear-search', 'ARZOPA');
+      check('a new search removes an item fragment it hides', !new URL(page.url()).hash);
+      await page.reload();
+      check('reloading keeps the new search', await page.$eval('#gear-search', el => el.value) === 'ARZOPA');
+
       // A direct hash link must do the same on a cold load.
       await page.goto(BASE + '/setup.html?category=audio#item-B0CRKGKZVX', { waitUntil: 'networkidle2' });
       await sleep(700);

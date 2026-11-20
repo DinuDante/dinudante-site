@@ -7,7 +7,7 @@ const shell = require('./site_shell');
 
 // Bump when a stylesheet or script changes so returning visitors are not
 // served a cached mixture of old CSS and new markup.
-const ASSET_VERSION = '20260915';
+const ASSET_VERSION = '20261120';
 
 const PAGES = [
   { file: 'index.html', page: 'home', url: '/',
@@ -50,6 +50,7 @@ for (const p of PAGES) {
 
   // Shared tokens and components load first; page stylesheets refine them.
   const assets = [
+    `<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https://m.media-amazon.com; object-src 'none'; base-uri 'none'; form-action 'none'">`,
     `<script src="${v('theme-init.js')}"></script>`,
     `<link rel="stylesheet" href="${v('site.v4.css')}">`,
     ...p.css.map(c => `<link rel="stylesheet" href="${v(c)}">`)
