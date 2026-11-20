@@ -11,6 +11,7 @@ const BASE = `http://127.0.0.1:${PORT}`;
 const ROUTES = ['/', '/resume.html', '/setup.html', '/privacy/', '/404.html'];
 const WIDTHS = [320, 360, 390, 430, 768, 820, 1024, 1280, 1440, 1920, 2560];
 
+const availableListings = require('../master_dataset.json').filter(item => !item.listingUnavailable).length;
 const results = [];
 const record = (engine, name, ok, detail) => {
   results.push({ engine, name, ok, detail });
@@ -179,7 +180,7 @@ async function runEngine(engineName, launcher) {
           && (a.rel || '').includes('sponsored'))
       };
     });
-    record(engineName, 'CTA labels match their destinations', ctas.internalOk && ctas.externalOk && ctas.internal === 5 && ctas.external === 93, JSON.stringify(ctas));
+    record(engineName, 'CTA labels match their destinations', ctas.internalOk && ctas.externalOk && ctas.internal === 5 && ctas.external === availableListings, JSON.stringify(ctas));
 
     // 8. Resume print rules resolve in this engine.
     await page.goto(BASE + '/resume.html', { waitUntil: 'load' });

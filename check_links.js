@@ -98,7 +98,11 @@ const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
         const [url, meta] = list[i];
         const row = { url, label: meta.label, rel: meta.rel, routes: [...new Set(meta.routes)] };
         try {
+          // Two affiliate URLs can resolve to the same loaded document. Start each
+          // check from a blank page so its status belongs to this navigation.
+          await ext.goto('about:blank');
           const res = await ext.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+          if (!res) throw new Error('No HTTP navigation response');
           row.status = res.status();
           row.finalUrl = ext.url();
           row.title = (await ext.title()).replace(/\s+/g, ' ').trim().slice(0, 120);

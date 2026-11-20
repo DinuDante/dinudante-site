@@ -393,6 +393,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
           internalCount: internal.length,
           internalAllViewItem: internal.every(a => a.textContent.trim().startsWith('View item')),
           externalCount: external.length,
+          unavailable: document.querySelector('#item-B0DT6G93YX .gear-card__footer').textContent.includes('currently unavailable')
+            && !document.querySelector('#item-B0DT6G93YX a[href]'),
           externalAllAmazon: external.every(a => a.textContent.trim().startsWith('View on Amazon')),
           externalAllSponsored: external.every(a => (a.rel || '').includes('sponsored') && (a.rel || '').includes('noopener') && a.target === '_blank'),
           externalAllAmazonHost: external.every(a => /(^https:\/\/link\.amazon\/)|(^https:\/\/www\.amazon\.)/.test(a.href)),
@@ -402,7 +404,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       check('featured cards use "View item" for internal references',
         labels.internalCount === 5 && labels.internalAllViewItem, JSON.stringify(labels));
       check('catalogue cards use "View on Amazon" with sponsored rel on an Amazon URL',
-        labels.externalCount === 93 && labels.externalAllAmazon && labels.externalAllSponsored && labels.externalAllAmazonHost,
+        labels.externalCount === 92 && labels.unavailable && labels.externalAllAmazon && labels.externalAllSponsored && labels.externalAllAmazonHost,
         JSON.stringify(labels));
       check('no implementation jargon or literal escape text on the page', labels.jargon === false);
 

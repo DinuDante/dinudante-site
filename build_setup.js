@@ -37,6 +37,10 @@ function note(item) {
 
 /* Catalogue card: the outbound action is the verified Amazon destination. */
 function card(item) {
+  const titleMarkup = item.listingUnavailable ? esc(item.title)
+    : `<a href="${esc(item.url)}" target="_blank" rel="sponsored noopener noreferrer">${esc(item.title)}</a>`;
+  const action = item.listingUnavailable ? '<span class="gear-note">Amazon listing currently unavailable</span>'
+    : `<a class="gear-cta" href="${esc(item.url)}" target="_blank" rel="sponsored noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span><span class="visually-hidden"> — ${esc(item.title)}, opens in a new tab</span></a>`;
   const full = item.exactListingTitle && item.exactListingTitle !== item.title ? item.exactListingTitle : null;
   const search = [item.title, item.exactListingTitle || '', item.primaryCategory, item.asin]
     .join(' ').toLowerCase().replace(/\s+/g, ' ').trim();
@@ -48,11 +52,11 @@ function card(item) {
       </div>
       <div class="gear-card__body">
         <span class="gear-cat">${esc(title(item.primaryCategory))}</span>
-        <h3 class="gear-card__title"><a href="${esc(item.url)}" target="_blank" rel="sponsored noopener noreferrer">${esc(item.title)}</a></h3>
+        <h3 class="gear-card__title">${titleMarkup}</h3>
         ${note(item)}
         ${full ? `<details class="gear-details"><summary>Full product name</summary><p>${esc(full)}</p></details>` : ''}
         <div class="gear-card__footer">
-          <a class="gear-cta" href="${esc(item.url)}" target="_blank" rel="sponsored noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span><span class="visually-hidden"> — ${esc(item.title)}, opens in a new tab</span></a>
+          ${action}
         </div>
       </div>
     </li>`;
@@ -101,7 +105,7 @@ const itemList = {
       alternateName: item.title,
       category: title(item.primaryCategory),
       image: item.image,
-      url: item.url
+      url: item.listingUnavailable ? `https://dinudante.in/setup.html#item-${item.asin}` : item.url
     }
   }))
 };
